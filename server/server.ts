@@ -1,13 +1,12 @@
 import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
-import { Sequelize } from "sequelize";
 
 import env from "./config/environment";
+import { initDatabase } from "./config/database";
 import routes from "./routes";
 
 const app = express();
-const sequelize = new Sequelize(env.DB_CONNECTION_STRING);
 
 app.use(bodyParser.json());
 
@@ -25,14 +24,5 @@ app.listen(env.PORT, async () => {
   // eslint-disable-next-line no-console
   console.log(`app running on port ${env.PORT}`);
 
-  try {
-    await sequelize.authenticate();
-    // eslint-disable-next-line no-console
-    console.log("Connection has been established successfully.");
-  }
-  catch (error) {
-    // eslint-disable-next-line no-console
-    console.error("Unable to connect to the database:", error);
-    process.exit(1);
-  }
+  await initDatabase();
 });
