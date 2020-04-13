@@ -19,6 +19,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "brace-style": ["warn", "stroustrup"],
       "comma-dangle": ["warn", "never"],
       "global-require": ["off"],
       "quotes": ["off"]
