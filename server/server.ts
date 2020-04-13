@@ -3,7 +3,7 @@ import * as express from "express";
 import * as path from "path";
 import { Sequelize } from "sequelize";
 
-import env from "./config/env";
+import env from "./config/environment";
 import routes from "./routes";
 
 const app = express();
