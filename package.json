@@ -4,11 +4,18 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@types/node": "^13.11.1",
     "body-parser": "^1.19.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "concurrently": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
     "nodemon": "^2.0.3"
   },
   "scripts": {
@@ -20,7 +27,7 @@
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn lint:server && yarn lint:client",
-    "lint:server": "eslint server",
+    "lint:server": "eslint server/**",
     "lint:client": "cd client && yarn lint"
   },
   "keywords": [],
