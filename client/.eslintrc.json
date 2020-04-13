@@ -30,12 +30,13 @@
         "arrow-parens": ["off"],
         "brace-style": ["warn", "stroustrup"],
         "comma-dangle": ["warn", "never"],
+        "import/extensions": ["off"],
         "import/no-named-as-default": ["off"],
         "import/no-named-as-default-member": ["off"],
         "indent": ["warn", 2],
         "linebreak-style": ["off"],
         "quotes": ["off"],
-        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+        "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
         "react/jsx-one-expression-per-line": ["off"]
     },
     "settings": {
@@ -48,6 +49,7 @@
                     ".tsx"
                 ],
                 "paths": [
+                    "node_modules",
                     "src"
                 ]
             }
