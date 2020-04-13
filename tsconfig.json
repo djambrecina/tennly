@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"sourceMap": true,
+		"allowJs": true,
+		"forceConsistentCasingInFileNames": false,
+		"noImplicitAny": false,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"jsx": "react",
+		"lib": [
+			"es6",
+			"dom",
+			"esnext"
+		],
+		"noImplicitReturns": false,
+		"noImplicitThis": false,
+		"strictNullChecks": false,
+		"suppressImplicitAnyIndexErrors": true,
+		"noUnusedLocals": false,
+		"baseUrl": "server"
+	}
+}

@@ -1,6 +1,6 @@
-import bodyParser from "body-parser";
-import express from "express";
-import path from "path";
+import * as bodyParser from "body-parser";
+import * as express from "express";
+import * as path from "path";
 import { Sequelize } from "sequelize";
 
 import env from "./config/env";
@@ -16,7 +16,7 @@ app.use("/api", routes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
-  app.get("*", (req, res) => {
+  app.get("*", (_, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
