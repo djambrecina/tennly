@@ -1,3 +1,4 @@
+import * as path from "path";
 import { Sequelize } from "sequelize-typescript";
 
 import env from "./environment";
@@ -9,6 +10,8 @@ export const initDatabase = async (): Promise<Sequelize> => {
 
   try {
     await sequelize.authenticate();
+    sequelize.addModels([path.resolve(__dirname, "/models/**/*.model.ts")]);
+
     // eslint-disable-next-line no-console
     console.log("Connection has been established successfully.");
   }
