@@ -19,6 +19,7 @@
         "@typescript-eslint"
     ],
     "rules": {
+      "comma-dangle": ["warn", "never"],
       "global-require": ["off"],
       "quotes": ["off"]
     }
