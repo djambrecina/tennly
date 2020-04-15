@@ -35,7 +35,7 @@
     "start": "node server/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "yarn lint:server && yarn lint:client",
-    "lint:server": "eslint server/**",
+    "lint:server": "eslint --ext .js,.jsx,.ts,.tsx server",
     "lint:client": "cd client && yarn lint"
   },
   "keywords": [],
