@@ -9,6 +9,7 @@ import {
 
 import Leagues from './modules/leagues/Leagues';
 import Navigation from './components/Navigation';
+import Players from './modules/players/Players';
 
 const App: React.FunctionComponent = () => (
   <Layout>
@@ -19,6 +20,7 @@ const App: React.FunctionComponent = () => (
     <Layout>
       <Switch>
         <Route path={paths.leagues} component={Leagues} />
+        <Route path={paths.players} component={Players} />
       </Switch>
     </Layout>
   </Layout>

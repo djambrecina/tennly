@@ -10,7 +10,11 @@ const Navigation: React.FunctionComponent = () => (
         Leagues
       </Link>
     </Menu.Item>
-    <Menu.Item key="players">Players</Menu.Item>
+    <Menu.Item key="players">
+      <Link to={paths.players}>
+        Players
+      </Link>
+    </Menu.Item>
   </Menu>
 );
 
