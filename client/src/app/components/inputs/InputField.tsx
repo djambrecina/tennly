@@ -42,7 +42,7 @@ type Props = InputProps & InputFieldProps;
 
 const parseNumber = (val: number | string): number => +val;
 
-const InputField = ({ name, ...rest }: Props): React.ReactNode => {
+const InputField = ({ name, ...rest }: Props): JSX.Element => {
   const numberField = rest.type === 'number';
 
   return (

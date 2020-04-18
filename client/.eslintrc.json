@@ -35,6 +35,7 @@
         "import/no-named-as-default-member": ["off"],
         "import/prefer-default-export": ["off"],
         "indent": ["warn", 2],
+        "jsx-a11y/label-has-associated-control": ["off"],
         "linebreak-style": ["off"],
         "quotes": ["off"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
