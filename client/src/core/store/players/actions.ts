@@ -1,3 +1,4 @@
+import { Player } from 'core/models/player';
 import { createAsyncAction } from 'typesafe-actions';
 
 import {
@@ -10,7 +11,7 @@ export const fetchPlayers = createAsyncAction(
   FETCH_PLAYERS,
   FETCH_PLAYERS_SUCCESS,
   FETCH_PLAYERS_FAILURE
-)<undefined, {}[], {}>(); /* TODO success return type */
+)<undefined, Player[], {}>();
 
 export default {
   fetchPlayers

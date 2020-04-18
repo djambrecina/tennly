@@ -21,7 +21,7 @@ export default function configureStore(
 
   const store = createStore(
     rootReducer,
-    initialState,
+    initialState as any,
     composeEnhancers(applyMiddleware(sagaMiddleware))
   );
 
