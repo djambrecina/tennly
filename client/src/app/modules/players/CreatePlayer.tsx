@@ -1,6 +1,8 @@
 import { Typography } from 'antd';
 import paths from 'config/paths';
+import { createPlayer } from 'core/store/players/actions';
 import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import {
   generatePath,
   RouteComponentProps
@@ -10,14 +12,15 @@ import CreatePlayerForm from './components/CreatePlayerForm';
 import { CreatePlayerFormValues } from './types';
 
 const CreatePlayer: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+  const dispatch = useDispatch();
+
   const onCancel = useCallback(() => {
     history.push(generatePath(paths.players));
   }, [history]);
 
   const onSubmit = useCallback((values: CreatePlayerFormValues) => {
-    console.log("SUBMIT");
-    console.log(values);
-  }, []);
+    dispatch(createPlayer.request(values));
+  }, [dispatch]);
 
   return (
     <>

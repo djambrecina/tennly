@@ -3,7 +3,7 @@ import {
   Response
 } from "express";
 
-import { AllPlayersViewModel } from '../../shared/viewModels/player';
+import { AllPlayersViewModel } from '../../shared/types/player';
 import PlayerService from "../services/player.service";
 
 export const getAll = async (_: Request, res: Response): Promise<void> => {

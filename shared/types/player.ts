@@ -3,3 +3,8 @@ export interface AllPlayersViewModel {
   firstName: string;
   lastName: string;
 }
+
+export interface CreatePlayerRequestBody {
+  firstName: string;
+  lastName: string;
+}
