@@ -1,7 +1,8 @@
 const paths = {
   home: '/',
   leagues: '/leagues',
-  players: '/players'
+  players: '/players',
+  createPlayer: '/players/create'
 };
 
 export default paths;
