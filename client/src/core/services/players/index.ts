@@ -1,8 +1,7 @@
-import { Player } from 'core/models/player';
-
+import { AllPlayersViewModel } from '../../../../../shared/viewModels/player';
 import api from '../api';
 
-export const getPlayers = async (): Promise<Player[]> => {
-  const { data } = await api.get<Player[]>("/player/all");
+export const getPlayers = async (): Promise<AllPlayersViewModel[]> => {
+  const { data } = await api.get<AllPlayersViewModel[]>("/player/all");
   return data;
 };

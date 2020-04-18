@@ -1,6 +1,6 @@
-import { Player } from 'core/models/player';
 import { createAsyncAction } from 'typesafe-actions';
 
+import { AllPlayersViewModel } from '../../../../../shared/viewModels/player';
 import {
   FETCH_PLAYERS,
   FETCH_PLAYERS_SUCCESS,
@@ -11,7 +11,7 @@ export const fetchPlayers = createAsyncAction(
   FETCH_PLAYERS,
   FETCH_PLAYERS_SUCCESS,
   FETCH_PLAYERS_FAILURE
-)<undefined, Player[], {}>();
+)<undefined, AllPlayersViewModel[], {}>();
 
 export default {
   fetchPlayers

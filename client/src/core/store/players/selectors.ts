@@ -1,7 +1,7 @@
-import { Player } from 'core/models/player';
 import { createSelector } from 'reselect';
 import { State } from 'types';
 
+import { AllPlayersViewModel } from '../../../../../shared/viewModels/player';
 import {
   AllIdsState,
   ByIdState,
@@ -14,5 +14,5 @@ const getById = (state: State): ByIdState => state.players.byId;
 export const getPlayers = createSelector(
   getById,
   getAllIds,
-  (byId, allIds): Player[] => allIds.map(id => byId[id]),
+  (byId, allIds): AllPlayersViewModel[] => allIds.map(id => byId[id]),
 );
