@@ -22,7 +22,7 @@ const Players: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   });
 
   const goToCreatePlayer = useCallback(() => {
-    history.push(generatePath(paths.createPlayer))
+    history.push(generatePath(paths.createPlayer));
   }, [history]);
 
   return (

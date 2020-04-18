@@ -38,7 +38,9 @@
         "linebreak-style": ["off"],
         "quotes": ["off"],
         "react/jsx-filename-extension": ["warn", { "extensions": [".jsx", ".tsx"] }],
-        "react/jsx-one-expression-per-line": ["off"]
+        "react/jsx-one-expression-per-line": ["off"],
+        "react/jsx-props-no-spreading": ["off"],
+        "react/prop-types": ["off"]
     },
     "settings": {
         "import/resolver": {

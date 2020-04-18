@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import Leagues from './modules/leagues/Leagues';
-import Navigation from './components/Navigation';
+import Navigation from './components/navigation/Navigation';
 import Players from './modules/players/Players';
 import CreatePlayer from './modules/players/CreatePlayer';
 import styles from './App.module.css';
