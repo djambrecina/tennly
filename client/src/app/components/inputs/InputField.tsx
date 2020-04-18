@@ -1,6 +1,7 @@
 import {
   Input,
-  InputNumber
+  InputNumber,
+  Row
 } from 'antd';
 import { InputProps } from 'antd/lib/input';
 import { InputNumberProps } from 'antd/lib/input-number';
@@ -37,6 +38,7 @@ const WrappedInputNumber = ({
 
 interface InputFieldProps {
   name: string;
+  label: string;
   validate?: Validator | Validator[];
 }
 
@@ -44,17 +46,25 @@ type Props = InputProps & InputFieldProps;
 
 const parseNumber = (val: number | string): number => +val;
 
-const InputField = ({ name, validate, ...rest }: Props): JSX.Element => {
+const InputField = ({
+  name,
+  label,
+  validate,
+  ...rest
+}: Props): JSX.Element => {
   const numberField = rest.type === 'number';
 
   return (
-    <Field
-      name={name}
-      validate={validate}
-      component={numberField ? WrappedInputNumber : WrappedInput}
-      inputProps={rest}
-      parse={numberField ? parseNumber : undefined}
-    />
+    <Row>
+      <label>{label}</label>
+      <Field
+        name={name}
+        validate={validate}
+        component={numberField ? WrappedInputNumber : WrappedInput}
+        inputProps={rest}
+        parse={numberField ? parseNumber : undefined}
+      />
+    </Row>
   );
 };
 

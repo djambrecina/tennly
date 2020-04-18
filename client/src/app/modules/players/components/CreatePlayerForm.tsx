@@ -20,7 +20,7 @@ import {
 
 interface FormProps {
   onCancel: () => void;
-};
+}
 
 type Props = InjectedFormProps<CreatePlayerFormValues, FormProps> & FormProps;
 
@@ -30,20 +30,16 @@ const CreatePlayerForm: React.FunctionComponent<Props> = ({
   handleSubmit
 }) => (
   <form className={styles.form} onSubmit={handleSubmit}>
-    <Row>
-      <label>First name</label>
-      <InputField
-        name={generateObjectPath(FormValues, "firstName")}
-        validate={required}
-      />
-    </Row>
-    <Row>
-      <label>Last name</label>
-      <InputField
-        name={generateObjectPath(FormValues, "lastName")}
-        validate={required}
-      />
-    </Row>
+    <InputField
+      name={generateObjectPath(FormValues, "firstName")}
+      label="First name"
+      validate={required}
+    />
+    <InputField
+      name={generateObjectPath(FormValues, "lastName")}
+      label="Last name"
+      validate={required}
+    />
     <Row justify="end">
       <Button
         onClick={onCancel}
