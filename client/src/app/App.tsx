@@ -9,10 +9,11 @@ import {
 import Leagues from './modules/leagues/Leagues';
 import Navigation from './components/Navigation';
 import Players from './modules/players/Players';
+import styles from './App.module.css';
 
 const App: React.FunctionComponent = () => (
   <Layout>
-    <Layout.Header>
+    <Layout.Header className={styles.header}>
       <Navigation />
     </Layout.Header>
     <Layout>
