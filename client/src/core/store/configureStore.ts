@@ -21,7 +21,7 @@ export default function configureStore(
 
   const store = createStore(
     rootReducer,
-    initialState as any,
+    initialState as any, // eslint-disable-line @typescript-eslint/no-explicit-any
     composeEnhancers(applyMiddleware(sagaMiddleware))
   );
 

@@ -11,7 +11,7 @@ import { fetchPlayers } from './actions';
 import { FETCH_PLAYERS } from './constants';
 
 function* watchFetchPlayersSaga(): Generator {
-  yield takeLatest(FETCH_PLAYERS, function* () {
+  yield takeLatest(FETCH_PLAYERS, function* fetchPlayersSaga() {
     try {
       const players = yield call(getPlayers);
       yield put(fetchPlayers.success(players));

@@ -6,7 +6,7 @@ import { fetchPlayers } from './actions';
 import {
   AllIdsState,
   ByIdState,
-  PlayersActions,
+  PlayersActions
 } from './types';
 
 const allIds = createReducer<AllIdsState, PlayersActions>([])
