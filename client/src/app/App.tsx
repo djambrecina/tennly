@@ -1,7 +1,6 @@
 import { Layout } from 'antd';
 import paths from 'config/paths';
 import React from 'react';
-import LoadingBar from 'react-redux-loading-bar';
 import {
   Route,
   Switch
@@ -16,7 +15,6 @@ const App: React.FunctionComponent = () => (
     <Layout.Header>
       <Navigation />
     </Layout.Header>
-    <LoadingBar />
     <Layout>
       <Switch>
         <Route path={paths.leagues} component={Leagues} />
