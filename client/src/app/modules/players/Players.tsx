@@ -1,11 +1,10 @@
+import { Typography } from 'antd';
 import { fetchPlayers } from 'core/store/players/actions';
-import { getPlayers } from 'core/store/players/selectors';
 import React from 'react';
-import {
-  useDispatch,
-  useSelector
-} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffectOnce } from 'react-use';
+
+import PlayersTable from './components/PlayersTable';
 
 const Players: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -13,13 +12,13 @@ const Players: React.FunctionComponent = () => {
     dispatch(fetchPlayers.request());
   });
 
-  const players = useSelector(getPlayers);
-  console.log(players);
-
   return (
-    <div>
-      Players
-    </div>
+    <>
+      <Typography.Title level={3}>
+        Players
+      </Typography.Title>
+      <PlayersTable />
+    </>
   );
 };
 

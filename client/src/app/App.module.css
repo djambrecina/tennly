@@ -1,3 +1,9 @@
 .header {
   padding: 0;
 }
+
+.content {
+  width: 100vw;
+  height: calc(100vh - 64px);
+  padding: 24px;
+}

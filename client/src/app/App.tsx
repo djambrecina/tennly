@@ -16,12 +16,12 @@ const App: React.FunctionComponent = () => (
     <Layout.Header className={styles.header}>
       <Navigation />
     </Layout.Header>
-    <Layout>
+    <Layout.Content className={styles.content}>
       <Switch>
         <Route path={paths.leagues} component={Leagues} />
         <Route path={paths.players} component={Players} />
       </Switch>
-    </Layout>
+    </Layout.Content>
   </Layout>
 );
 
