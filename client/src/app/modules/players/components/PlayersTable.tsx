@@ -1,10 +1,14 @@
 import { Table } from 'antd';
-import { getPlayers } from 'core/store/players/selectors';
+import {
+  getPlayers,
+  getFetchPlayersInfo
+} from 'core/store/players/selectors';
 import React from 'react';
 import { useSelector } from 'react-redux';
 
 const PlayersTable: React.FunctionComponent = () => {
   const players = useSelector(getPlayers);
+  const fetchInfo = useSelector(getFetchPlayersInfo);
   const dataSource = players.map(p => ({ key: p.id, ...p }));
 
   return (
@@ -17,6 +21,7 @@ const PlayersTable: React.FunctionComponent = () => {
         dataIndex: "lastName"
       }]}
       dataSource={dataSource}
+      loading={fetchInfo.loading}
     />
   );
 };
