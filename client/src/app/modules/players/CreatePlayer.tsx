@@ -1,8 +1,11 @@
+import { Typography } from 'antd';
 import React from 'react';
 
 const CreatePlayer: React.FunctionComponent = () => {
   return (
-    <div>CREATE PLAYER</div>
+    <Typography.Title level={3}>
+      Create player
+    </Typography.Title>
   );
 };
 
