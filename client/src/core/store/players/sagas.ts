@@ -1,4 +1,8 @@
 import {
+  errorWithUserMessage,
+  success
+} from 'core/services/notification';
+import {
   getPlayers,
   postPlayer
 } from 'core/services/players';
@@ -28,9 +32,11 @@ function* watchCreatePlayerSaga(): Generator {
         const body = action.payload;
         yield call(postPlayer, body);
         yield put(createPlayer.success());
+        success("Player created");
       }
       catch (err) {
         yield put(createPlayer.failure(err));
+        errorWithUserMessage("Creating player failed");
       }
     });
 }

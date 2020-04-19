@@ -1,4 +1,9 @@
-import Player from "../models/player.model";
+import Player from '../models/player.model';
+import { CreatePlayerRequestBody } from '../../shared/types/player';
+
+export const create = async (player: CreatePlayerRequestBody): Promise<void> => {
+  await Player.create(player);
+};
 
 export const getAll = async (): Promise<Player[]> => {
   const players = await Player.findAll({
@@ -9,5 +14,6 @@ export const getAll = async (): Promise<Player[]> => {
 };
 
 export default {
+  create,
   getAll
 };
