@@ -36,7 +36,7 @@ function* watchCreatePlayerSaga(): Generator {
         yield call(postPlayer, body);
         yield put(createPlayer.success());
         success("Player created");
-        yield(put(push(generatePath(paths.players))));
+        yield put(push(generatePath(paths.players)));
       }
       catch (err) {
         yield put(createPlayer.failure(err));
