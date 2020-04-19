@@ -14,11 +14,16 @@ const PlayersTable: React.FunctionComponent = () => {
   return (
     <Table
       columns={[{
-        title: "First name",
-        dataIndex: "firstName"
-      }, {
         title: "Last name",
-        dataIndex: "lastName"
+        dataIndex: "lastName",
+        defaultSortOrder: "ascend",
+        sorter: (a, b): number => a.lastName.localeCompare(b.lastName),
+        showSorterTooltip: false
+      }, {
+        title: "First name",
+        dataIndex: "firstName",
+        sorter: (a, b): number => a.firstName.localeCompare(b.firstName),
+        showSorterTooltip: false
       }]}
       dataSource={dataSource}
       loading={fetchInfo.loading}

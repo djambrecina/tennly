@@ -7,8 +7,9 @@ import {
 } from 'react-router-dom';
 
 import Leagues from './modules/leagues/Leagues';
-import Navigation from './components/Navigation';
+import Navigation from './components/navigation/Navigation';
 import Players from './modules/players/Players';
+import CreatePlayer from './modules/players/CreatePlayer';
 import styles from './App.module.css';
 
 const App: React.FunctionComponent = () => (
@@ -18,8 +19,9 @@ const App: React.FunctionComponent = () => (
     </Layout.Header>
     <Layout.Content className={styles.content}>
       <Switch>
-        <Route path={paths.leagues} component={Leagues} />
-        <Route path={paths.players} component={Players} />
+        <Route exact path={paths.leagues} component={Leagues} />
+        <Route exact path={paths.players} component={Players} />
+        <Route exact path={paths.createPlayer} component={CreatePlayer} />
       </Switch>
     </Layout.Content>
   </Layout>

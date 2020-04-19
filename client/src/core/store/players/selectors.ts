@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 import { State } from 'types';
 
 import { FetchInfoState } from '../abstract/reducers/fetchInfo';
-import { AllPlayersViewModel } from '../../../../../shared/viewModels/player';
+import { AllPlayersViewModel } from '../../../../../shared/types/player';
 import {
   AllIdsState,
   ByIdState
