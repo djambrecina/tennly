@@ -1,3 +1,5 @@
+import paths from 'config/paths';
+import { push } from 'connected-react-router';
 import {
   errorWithUserMessage,
   success
@@ -6,6 +8,7 @@ import {
   getPlayers,
   postPlayer
 } from 'core/services/players';
+import { generatePath } from 'react-router';
 import {
   all,
   call,
@@ -33,6 +36,7 @@ function* watchCreatePlayerSaga(): Generator {
         yield call(postPlayer, body);
         yield put(createPlayer.success());
         success("Player created");
+        yield(put(push(generatePath(paths.players))));
       }
       catch (err) {
         yield put(createPlayer.failure(err));
