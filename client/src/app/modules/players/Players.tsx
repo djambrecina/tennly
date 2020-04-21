@@ -1,7 +1,6 @@
 import {
   Button,
-  Row,
-  Typography
+  PageHeader
 } from 'antd';
 import paths from 'config/paths';
 import { fetchPlayers } from 'core/store/players/actions';
@@ -26,17 +25,16 @@ const Players: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   }, [history]);
 
   return (
-    <>
-      <Row justify="space-between">
-        <Typography.Title level={3}>
-          Players
-        </Typography.Title>
+    <PageHeader
+      title="Players"
+      extra={
         <Button onClick={goToCreatePlayer}>
           Create Player
         </Button>
-      </Row>
+      }
+    >
       <PlayersTable />
-    </>
+    </PageHeader>
   );
 };
 

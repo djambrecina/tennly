@@ -1,4 +1,4 @@
-import { Typography } from 'antd';
+import { PageHeader } from 'antd';
 import paths from 'config/paths';
 import { createPlayer } from 'core/store/players/actions';
 import React, { useCallback } from 'react';
@@ -23,15 +23,12 @@ const CreatePlayer: React.FunctionComponent<RouteComponentProps> = ({ history })
   }, [dispatch]);
 
   return (
-    <>
-      <Typography.Title level={3}>
-        Create player
-      </Typography.Title>
+    <PageHeader title="Create player">
       <CreatePlayerForm
         onCancel={onCancel}
         onSubmit={onSubmit}
       />
-    </>
+    </PageHeader>
   );
 };
 
