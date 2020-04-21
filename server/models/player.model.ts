@@ -4,6 +4,7 @@ import {
   Column,
   CreatedAt,
   DataType,
+  Length,
   Model,
   PrimaryKey,
   UpdatedAt,
@@ -25,10 +26,12 @@ class Player extends Model<Player> {
 
   @AllowNull(false)
   @Column(DataType.TEXT)
+  @Length({ max: 50 })
   firstName: string;
 
   @AllowNull(false)
   @Column(DataType.TEXT)
+  @Length({ max: 50 })
   lastName: string;
 }
 
