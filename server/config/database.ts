@@ -5,7 +5,8 @@ import League from "../models/league.model";
 import LeaguePlayer from "../models/leaguePlayer.model";
 import Player from "../models/player.model";
 
-let sequelize = null;
+// eslint-disable-next-line import/no-mutable-exports
+export let sequelize = null;
 
 export const initDatabase = async (): Promise<Sequelize> => {
   sequelize = new Sequelize(env.DB_CONNECTION_STRING);

@@ -32,3 +32,8 @@ export const getAll = async (_: Request, res: Response): Promise<void> => {
     res.status(400).json(err.message);
   }
 };
+
+export default {
+  create,
+  getAll
+};

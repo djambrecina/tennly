@@ -19,7 +19,7 @@ const CreateLeague: React.FunctionComponent<RouteComponentProps> = ({ history })
   }, [history]);
 
   const onSubmit = useCallback((values: CreateLeagueFormValues) => {
-    dispatch(createLeague.request(values));
+    dispatch(createLeague.request({ ...values, players: [] })); /* TODO players */
   }, [dispatch]);
 
   return (
