@@ -27,11 +27,11 @@ const Players: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   return (
     <PageHeader
       title="Players"
-      extra={
+      extra={(
         <Button onClick={goToCreatePlayer}>
           Create Player
         </Button>
-      }
+      )}
     >
       <PlayersTable />
     </PageHeader>
