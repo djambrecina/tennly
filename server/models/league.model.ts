@@ -12,11 +12,11 @@ import {
   Table
 } from "sequelize-typescript";
 
-import League from "./league.model";
 import LeaguePlayer from "./leaguePlayer.model";
+import Player from "./player.model";
 
 @Table
-class Player extends Model<Player> {
+class League extends Model<League> {
   @PrimaryKey
   @AutoIncrement
   @Column(DataType.INTEGER)
@@ -28,18 +28,13 @@ class Player extends Model<Player> {
   @UpdatedAt
   updatedAt: Date;
 
-  @Length({ max: 50 })
+  @Length({ max: 100 })
   @AllowNull(false)
   @Column(DataType.TEXT)
-  firstName: string;
+  name: string;
 
-  @Length({ max: 50 })
-  @AllowNull(false)
-  @Column(DataType.TEXT)
-  lastName: string;
-
-  @BelongsToMany(() => League, () => LeaguePlayer)
-  leagues: League[];
+  @BelongsToMany(() => Player, () => LeaguePlayer)
+  players: Player[];
 }
 
-export default Player;
+export default League;
