@@ -9,9 +9,12 @@ import {
 } from '../../shared/types/player';
 import PlayerService from '../services/player.service';
 
-export const create = async (req: Request, res: Response): Promise<void> => {
+export const create = async (
+  req: Request<null, null, CreatePlayerRequestBody, null>,
+  res: Response<null>
+): Promise<void> => {
   try {
-    const { body }: { body: CreatePlayerRequestBody } = req;
+    const { body } = req;
 
     await PlayerService.create(body);
 
@@ -22,7 +25,10 @@ export const create = async (req: Request, res: Response): Promise<void> => {
   }
 };
 
-export const getAll = async (_: Request, res: Response): Promise<void> => {
+export const getAll = async (
+  _: Request,
+  res: Response<AllPlayersViewModel[]>
+): Promise<void> => {
   try {
     const players: AllPlayersViewModel[] = await PlayerService.getAll();
 
