@@ -1,4 +1,7 @@
-import { Select } from 'antd';
+import {
+  Row,
+  Select
+} from 'antd';
 import React from 'react';
 import {
   BaseFieldProps,
@@ -7,37 +10,36 @@ import {
   WrappedFieldProps
 } from 'redux-form';
 
-const { Option } = Select;
-
-const DEFAULT_VALUE = 'defaultValue';
+import styles from './Multiselect.module.css';
 
 export interface DropdownOption {
-  id: string;
+  id: string | number;
   name: string;
 }
 
 interface MultiselectWrapperProps {
+  placeholder?: string;
   disabled?: boolean;
-  defaultValue?: string;
   options: DropdownOption[];
 }
 
 const renderOption = (option: DropdownOption): React.ReactElement => (
-  <Option key={option.id} value={option.id}>
+  <Select.Option key={option.id} value={option.id}>
     {option.name}
-  </Option>
+  </Select.Option>
 );
 
 const DropdownList = ({
   input,
+  placeholder,
   disabled,
-  defaultValue,
   options
 }: WrappedFieldProps & MultiselectWrapperProps): React.ReactElement => (
   <Select
     {...input}
     mode="multiple"
-    placeholder="Select option"
+    placeholder={placeholder}
+    className={styles.select}
     disabled={disabled}
     filterOption
     optionFilterProp="children"
@@ -45,35 +47,36 @@ const DropdownList = ({
     defaultActiveFirstOption={false}
     dropdownMatchSelectWidth
   >
-    {defaultValue && (
-      <Option key={DEFAULT_VALUE} value={DEFAULT_VALUE}>
-        {defaultValue}
-      </Option>
-    )}
     {options && options.map(renderOption)}
   </Select>
 );
 
 interface OwnProps {
   name: string;
+  label: string;
+  placeholder?: string;
   validate?: Validator | Validator[];
 }
 
 const Multiselect = ({
   name,
+  label,
+  placeholder,
   disabled,
-  defaultValue,
   options,
   validate
 }: BaseFieldProps & OwnProps & MultiselectWrapperProps): React.ReactElement => (
-  <Field
-    name={name}
-    component={DropdownList}
-    options={options}
-    disabled={disabled}
-    defaultValue={defaultValue}
-    validate={validate}
-  />
+  <Row>
+    <label>{label}</label>
+    <Field
+      name={name}
+      placeholder={placeholder}
+      component={DropdownList}
+      options={options}
+      disabled={disabled}
+      validate={validate}
+    />
+  </Row>
 );
 
 export default Multiselect;
