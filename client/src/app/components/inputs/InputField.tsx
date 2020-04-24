@@ -16,7 +16,7 @@ const WrappedInput = ({
   input,
   inputProps,
   ...rest
-}: WrappedFieldProps & { inputProps: InputProps }): React.ReactNode => (
+}: WrappedFieldProps & { inputProps: InputProps }): React.ReactElement => (
   <Input
     {...input}
     {...inputProps}
@@ -28,7 +28,7 @@ const WrappedInputNumber = ({
   input,
   inputProps,
   ...rest
-}: WrappedFieldProps & { inputProps: InputNumberProps }): React.ReactNode => (
+}: WrappedFieldProps & { inputProps: InputNumberProps }): React.ReactElement => (
   <InputNumber
     {...input}
     {...inputProps}
