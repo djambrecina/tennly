@@ -3,9 +3,12 @@ import {
   Row
 } from 'antd';
 import InputField from 'app/components/inputs/InputField';
+import Multiselect, { DropdownOption } from 'app/components/inputs/Multiselect';
 import { required } from 'app/components/inputs/validators';
 import generateObjectPath from 'core/services/generateObjectPath';
+import { getPlayers } from 'core/store/players/selectors';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   InjectedFormProps,
   reduxForm
@@ -28,29 +31,42 @@ const CreateLeagueForm: React.FunctionComponent<Props> = ({
   invalid,
   onCancel,
   handleSubmit
-}) => (
-  <form className={styles.form} onSubmit={handleSubmit}>
-    <InputField
-      name={generateObjectPath(FormValues, "name")}
-      label="Name"
-      validate={required}
-    />
-    <Row justify="end">
-      <Button
-        onClick={onCancel}
-      >
-        Cancel
-      </Button>
-      <Button
-        htmlType="submit"
-        type="primary"
-        disabled={invalid}
-      >
-        Save
-      </Button>
-    </Row>
-  </form>
-);
+}) => {
+  const players = useSelector(getPlayers);
+  const playersOptions: DropdownOption[] = players.map(p => ({
+    id: p.id,
+    name: `${p.firstName} ${p.lastName}`
+  }));
+
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <InputField
+        name={generateObjectPath(FormValues, "name")}
+        label="Name"
+        validate={required}
+      />
+      <Multiselect
+        name={generateObjectPath(FormValues, "players")}
+        label="Players"
+        options={playersOptions}
+      />
+      <Row justify="end">
+        <Button
+          onClick={onCancel}
+        >
+          Cancel
+        </Button>
+        <Button
+          htmlType="submit"
+          type="primary"
+          disabled={invalid}
+        >
+          Save
+        </Button>
+      </Row>
+    </form>
+  );
+};
 
 export default reduxForm<CreateLeagueFormValues, FormProps>({
   form: CREATE_LEAGUE_FORM

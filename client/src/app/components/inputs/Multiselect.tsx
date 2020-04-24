@@ -46,6 +46,8 @@ const DropdownList = ({
     value={input && input.value !== '' ? input.value : undefined}
     defaultActiveFirstOption={false}
     dropdownMatchSelectWidth
+    onFocus={(): void => {}} // eslint-disable-line @typescript-eslint/no-empty-function
+    onBlur={(): void => input.onBlur(input.value)}
   >
     {options && options.map(renderOption)}
   </Select>
