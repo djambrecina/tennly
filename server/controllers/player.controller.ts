@@ -2,6 +2,7 @@ import {
   Request,
   Response
 } from 'express';
+import * as log from 'loglevel';
 
 import {
   AllPlayersViewModel,
@@ -21,6 +22,7 @@ export const create = async (
     res.json(null);
   }
   catch (err) {
+    log.error(err);
     res.status(400).json(err.message);
   }
 };
@@ -35,6 +37,7 @@ export const getAll = async (
     res.json(players);
   }
   catch (err) {
+    log.error(err);
     res.status(400).json(err.message);
   }
 };

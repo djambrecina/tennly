@@ -1,7 +1,13 @@
-import { Transaction } from 'sequelize';
+import {
+  Sequelize,
+  Transaction
+} from 'sequelize';
 
 import League from '../models/league.model';
-import { CreateLeagueRequestBody } from '../../shared/types/league';
+import {
+  AllLeaguesViewModel,
+  CreateLeagueRequestBody
+} from '../../shared/types/league';
 
 export const create = async (
   league: CreateLeagueRequestBody,
@@ -10,13 +16,20 @@ export const create = async (
   League.create(league, { transaction })
 );
 
-export const getAll = async (): Promise<League[]> => {
-  const leagues = await League.findAll({
-    attributes: ["id", "createdAt", "name", "players"]
-  });
-
-  return leagues;
-};
+export const getAll = async (): Promise<AllLeaguesViewModel[]> => (
+  League.findAll({
+    attributes: [
+      "id",
+      "createdAt",
+      "name",
+      [Sequelize.literal(`(
+        SELECT COUNT(*)
+        FROM "LeaguePlayers"
+        WHERE "LeaguePlayers"."leagueId" = "League"."id"
+      )`), "numberOfPlayers"]
+    ]
+  })
+);
 
 export default {
   create,

@@ -1,7 +1,7 @@
 export interface AllLeaguesViewModel {
   id: number;
   name: string;
-  numberOfPlayers: number;
+  numberOfPlayers: string;
   createdAt: Date;
 }
 
