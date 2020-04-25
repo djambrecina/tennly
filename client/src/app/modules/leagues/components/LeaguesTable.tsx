@@ -1,4 +1,5 @@
 import { Table } from 'antd';
+import moment from 'moment';
 import {
   getLeagues,
   getFetchLeaguesInfo
@@ -23,7 +24,12 @@ const LeaguesTable: React.FunctionComponent = () => {
         dataIndex: "numberOfPlayers"
       }, {
         title: "Created at",
-        dataIndex: "createdAt"
+        dataIndex: "createdAt",
+        defaultSortOrder: "descend",
+        sorter: (a, b): number => (
+          moment(b.createdAt).milliseconds() - moment(a.createdAt).milliseconds()
+        ),
+        showSorterTooltip: false
       }]}
       dataSource={dataSource}
       loading={fetchInfo.loading}

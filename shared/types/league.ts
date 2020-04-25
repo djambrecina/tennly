@@ -2,7 +2,7 @@ export interface AllLeaguesViewModel {
   id: number;
   name: string;
   numberOfPlayers: string;
-  createdAt: Date;
+  createdAt: string;
 }
 
 export interface CreateLeagueRequestBody {
