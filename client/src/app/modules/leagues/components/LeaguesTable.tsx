@@ -35,6 +35,6 @@ const LeaguesTable: React.FunctionComponent = () => {
       loading={fetchInfo.loading}
     />
   );
-}
+};
 
 export default LeaguesTable;
