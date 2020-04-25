@@ -10,29 +10,10 @@ export const warning = (msg: string): void => {
   log.warn(msg);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const errorWithUserMessage = (msg: any): void => {
-  if (!msg) {
-    log.error('Bug with passing arguments, no message to be logged!');
-  }
+export const error = (msg: string, err: {}): void => {
+  message.error(msg);
   log.error(msg);
-  if (typeof msg === 'string') {
-    message.error(msg);
-  }
-  else if (msg.message) {
-    message.error(msg.message);
-  }
-  else {
-    message.error('Unknown error occured. Please contact developers.');
-  }
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const error = (msg: any): void => {
-  if (!msg) {
-    log.error('Bug with passing arguments, no message to be logged!');
-  }
-  log.error(msg);
+  log.error(err);
 };
 
 export const info = (msg: string | {}): void => {

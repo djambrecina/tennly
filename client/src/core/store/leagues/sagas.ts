@@ -1,7 +1,7 @@
 import paths from 'config/paths';
 import { push } from 'connected-react-router';
 import {
-  errorWithUserMessage,
+  error,
   success
 } from 'core/services/notification';
 import {
@@ -40,7 +40,7 @@ function* watchCreateLeagueSaga(): Generator {
       }
       catch (err) {
         yield put(createLeague.failure(err));
-        errorWithUserMessage("Creating league failed");
+        error("Creating league failed", err);
       }
     });
 }
@@ -54,6 +54,7 @@ function* watchFetchLeaguesSaga(): Generator {
       }
       catch (err) {
         yield put(fetchLeagues.failure(err));
+        error("Fetching leagues failed", err);
       }
     });
 }

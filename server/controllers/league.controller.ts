@@ -5,7 +5,11 @@ import {
 import { Transaction } from 'sequelize';
 
 import { sequelize } from '../config/database';
-import { CreateLeagueRequestBody } from '../../shared/types/league';
+import {
+  AllLeaguesViewModel,
+  CreateLeagueRequestBody
+} from '../../shared/types/league';
+import League from '../models/league.model';
 import LeaguePlayerService from '../services/leaguePlayer.service';
 import LeagueService from '../services/league.service';
 
@@ -28,6 +32,27 @@ export const create = async (
   }
 };
 
+export const getAll = async (
+  _: Request,
+  res: Response<AllLeaguesViewModel[]>
+): Promise<void> => {
+  try {
+    const leagues: League[] = await LeagueService.getAll();
+    const vms = leagues.map((l) => ({
+      id: l.id,
+      name: l.name,
+      numberOfPlayers: l.players.length,
+      createdAt: l.createdAt
+    }));
+
+    res.json(vms);
+  }
+  catch (err) {
+    res.status(400).json(err.message);
+  }
+};
+
 export default {
-  create
+  create,
+  getAll
 };

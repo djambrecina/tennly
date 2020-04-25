@@ -10,6 +10,15 @@ export const create = async (
   League.create(league, { transaction })
 );
 
+export const getAll = async (): Promise<League[]> => {
+  const leagues = await League.findAll({
+    attributes: ["id", "createdAt", "name", "players"]
+  });
+
+  return leagues;
+};
+
 export default {
-  create
+  create,
+  getAll
 };
