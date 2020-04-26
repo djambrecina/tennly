@@ -8,6 +8,7 @@ import {
 
 import CreateLeague from './modules/leagues/CreateLeague';
 import CreatePlayer from './modules/players/CreatePlayer';
+import LeagueDetails from './modules/leagues/LeagueDetails';
 import Leagues from './modules/leagues/Leagues';
 import Navigation from './components/navigation/Navigation';
 import Players from './modules/players/Players';
@@ -22,6 +23,7 @@ const App: React.FunctionComponent = () => (
       <Switch>
         <Route exact path={paths.leagues} component={Leagues} />
         <Route exact path={paths.createLeague} component={CreateLeague} />
+        <Route exact path={paths.leagueDetails} component={LeagueDetails} />
         <Route exact path={paths.players} component={Players} />
         <Route exact path={paths.createPlayer} component={CreatePlayer} />
       </Switch>

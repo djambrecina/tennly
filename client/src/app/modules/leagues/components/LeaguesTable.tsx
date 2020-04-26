@@ -1,4 +1,8 @@
-import { Table } from 'antd';
+import {
+  Button,
+  Table
+} from 'antd';
+import paths from 'config/paths';
 import moment from 'moment';
 import {
   getLeagues,
@@ -6,6 +10,7 @@ import {
 } from 'core/store/leagues/selectors';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { generatePath } from 'react-router';
 
 const LeaguesTable: React.FunctionComponent = () => {
   const leagues = useSelector(getLeagues);
@@ -31,6 +36,16 @@ const LeaguesTable: React.FunctionComponent = () => {
           moment(b.createdAt).milliseconds() - moment(a.createdAt).milliseconds()
         ),
         showSorterTooltip: false
+      }, {
+        dataIndex: "id",
+        render: (id) => (
+          <Button
+            type="link"
+            href={generatePath(paths.leagueDetails, { leagueId: id })}
+          >
+            Details
+          </Button>
+        )
       }]}
       dataSource={dataSource}
       loading={fetchInfo.loading}
