@@ -68,7 +68,7 @@ function* watchFetchLeagueDetailsSaga(): Generator {
       try {
         const leagueId = action.payload;
         const leagueDetails = yield call(getDetails, leagueId);
-        yield put(leagueDetails);
+        yield put(fetchLeagueDetails.success(leagueDetails));
       }
       catch (err) {
         yield put(fetchLeagueDetails.failure(err));
