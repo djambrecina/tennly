@@ -20,7 +20,7 @@ const LeagueDetails: React.FunctionComponent = () => {
   }, [dispatch, leagueId]);
 
   return (
-    <PageHeader title={league ? league.name : ""} />
+    <PageHeader title={league.name} />
   )
 };
 

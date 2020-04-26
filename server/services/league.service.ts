@@ -38,7 +38,11 @@ export const getDetails = async (leagueId: string): Promise<LeagueDetailsViewMod
     attributes: ["name"],
     include: [{
       model: Player,
-      attributes: ["id", "firstName", "lastName"]
+      as: "players",
+      attributes: ["id", "firstName", "lastName"],
+      through: {
+        attributes: []
+      }
     }]
   })
 );
