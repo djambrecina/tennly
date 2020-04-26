@@ -8,7 +8,8 @@ import { Transaction } from 'sequelize';
 import { sequelize } from '../config/database';
 import {
   AllLeaguesViewModel,
-  CreateLeagueRequestBody
+  CreateLeagueRequestBody,
+  LeagueDetailsViewModel
 } from '../../shared/types/league';
 import LeaguePlayerService from '../services/leaguePlayer.service';
 import LeagueService from '../services/league.service';
@@ -48,7 +49,24 @@ export const getAll = async (
   }
 };
 
+export const getDetails = async (
+  req: Request,
+  res: Response<LeagueDetailsViewModel>
+): Promise<void> => {
+  try {
+    const { leagueId } = req.params;
+    const league = await LeagueService.getDetails(leagueId);
+
+    res.json(league);
+  }
+  catch (err) {
+    log.error(err);
+    res.status(400).json(err.message);
+  }
+};
+
 export default {
   create,
-  getAll
+  getAll,
+  getDetails
 };

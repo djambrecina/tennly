@@ -4,9 +4,11 @@ import {
 } from 'sequelize';
 
 import League from '../models/league.model';
+import Player from '../models/player.model';
 import {
   AllLeaguesViewModel,
-  CreateLeagueRequestBody
+  CreateLeagueRequestBody,
+  LeagueDetailsViewModel
 } from '../../shared/types/league';
 
 export const create = async (
@@ -31,7 +33,18 @@ export const getAll = async (): Promise<AllLeaguesViewModel[]> => (
   })
 );
 
+export const getDetails = async (leagueId: string): Promise<LeagueDetailsViewModel> => (
+  League.findByPk(leagueId, {
+    attributes: ["name"],
+    include: [{
+      model: Player,
+      attributes: ["id", "firstName", "lastName"]
+    }]
+  })
+);
+
 export default {
   create,
-  getAll
+  getAll,
+  getDetails
 };
