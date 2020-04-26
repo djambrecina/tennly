@@ -5,6 +5,7 @@ import {
   success
 } from 'core/services/notification';
 import {
+  getDetails,
   getLeagues,
   postLeague
 } from 'core/services/leagues';
@@ -21,11 +22,13 @@ import { ActionType } from 'typesafe-actions';
 
 import {
   createLeague,
-  fetchLeagues
+  fetchLeagues,
+  fetchLeagueDetails
 } from './actions';
 import {
   CREATE_LEAGUE,
-  FETCH_LEAGUES
+  FETCH_LEAGUES,
+  FETCH_LEAGUE_DETAILS
 } from './constants';
 
 function* watchCreateLeagueSaga(): Generator {
@@ -59,10 +62,26 @@ function* watchFetchLeaguesSaga(): Generator {
     });
 }
 
+function* watchFetchLeagueDetailsSaga(): Generator {
+  yield takeLatest(FETCH_LEAGUE_DETAILS,
+    function* fetchLeagueDetailsSaga(action: ActionType<typeof fetchLeagueDetails.request>) {
+      try {
+        const leagueId = action.payload;
+        const leagueDetails = yield call(getDetails, leagueId);
+        yield put(leagueDetails);
+      }
+      catch (err) {
+        yield put(fetchLeagueDetails.failure(err));
+        error("Fetching league details failed", err);
+      }
+    });
+}
+
 function* leaguesSaga(): Generator {
   yield all([
     fork(watchCreateLeagueSaga),
-    fork(watchFetchLeaguesSaga)
+    fork(watchFetchLeaguesSaga),
+    fork(watchFetchLeagueDetailsSaga)
   ]);
 }
 

@@ -10,11 +10,13 @@ export interface CreateLeagueRequestBody {
   players: number[];
 }
 
+interface LeagueDetailsPlayerViewModel {
+  id: number;
+  firstName: string;
+  lastName: string;
+}
+
 export interface LeagueDetailsViewModel {
   name: string;
-  players: [{
-    id: number;
-    firstName: string;
-    lastName: string;
-  }];
+  players: LeagueDetailsPlayerViewModel[];
 }

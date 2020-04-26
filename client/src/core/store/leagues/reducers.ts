@@ -3,10 +3,14 @@ import { combineReducers } from 'redux';
 import { createReducer } from 'typesafe-actions';
 
 import fetchInfo from '../abstract/reducers/fetchInfo';
-import { fetchLeagues } from './actions';
+import {
+  fetchLeagueDetails,
+  fetchLeagues
+} from './actions';
 import {
   AllIdsState,
   ByIdState,
+  DetailsState,
   LeaguesActions
 } from './types';
 
@@ -16,9 +20,17 @@ const allIds = createReducer<AllIdsState, LeaguesActions>([])
 const byId = createReducer<ByIdState, LeaguesActions>({})
   .handleAction(fetchLeagues.success, (_, action) => mapKeys(action.payload, p => p.id));
 
+const DETAILS_DEFAULT_STATE: DetailsState = {
+  name: "",
+  players: []
+};
+const details = createReducer<DetailsState, LeaguesActions>(DETAILS_DEFAULT_STATE)
+  .handleAction(fetchLeagueDetails.success, (_, action) => action.payload);
+
 const reducers = combineReducers({
   allIds,
   byId,
+  details,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fetchLeaguesInfo: fetchInfo(fetchLeagues as any)
 });

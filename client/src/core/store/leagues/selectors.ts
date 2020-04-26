@@ -5,12 +5,15 @@ import { FetchInfoState } from '../abstract/reducers/fetchInfo';
 import { AllLeaguesViewModel } from '../../../../../shared/types/league';
 import {
   AllIdsState,
-  ByIdState
+  ByIdState,
+  DetailsState
 } from './types';
 
 const getAllIds = (state: State): AllIdsState => state.leagues.allIds;
 
 const getById = (state: State): ByIdState => state.leagues.byId;
+
+export const getLeagueDetails = (state: State): DetailsState => state.leagues.details;
 
 export const getLeagues = createSelector(
   getById,

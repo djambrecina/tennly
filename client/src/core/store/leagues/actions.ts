@@ -2,7 +2,8 @@ import { createAsyncAction } from 'typesafe-actions';
 
 import {
   AllLeaguesViewModel,
-  CreateLeagueRequestBody
+  CreateLeagueRequestBody,
+  LeagueDetailsViewModel
 } from '../../../../../shared/types/league';
 import {
   CREATE_LEAGUE,
@@ -10,7 +11,10 @@ import {
   CREATE_LEAGUE_FAILURE,
   FETCH_LEAGUES,
   FETCH_LEAGUES_SUCCESS,
-  FETCH_LEAGUES_FAILURE
+  FETCH_LEAGUES_FAILURE,
+  FETCH_LEAGUE_DETAILS,
+  FETCH_LEAGUE_DETAILS_SUCCESS,
+  FETCH_LEAGUE_DETAILS_FAILURE
 } from './constants';
 
 export const createLeague = createAsyncAction(
@@ -24,3 +28,9 @@ export const fetchLeagues = createAsyncAction(
   FETCH_LEAGUES_SUCCESS,
   FETCH_LEAGUES_FAILURE
 )<undefined, AllLeaguesViewModel[], {}>();
+
+export const fetchLeagueDetails = createAsyncAction(
+  FETCH_LEAGUE_DETAILS,
+  FETCH_LEAGUE_DETAILS_SUCCESS,
+  FETCH_LEAGUE_DETAILS_FAILURE
+)<string, LeagueDetailsViewModel, {}>();
