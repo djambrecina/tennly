@@ -26,6 +26,7 @@ const LeaguesTable: React.FunctionComponent = () => {
         title: "Created at",
         dataIndex: "createdAt",
         defaultSortOrder: "descend",
+        render: (createdAt) => moment(createdAt).format('DD/MM/YYYY HH:mm'),
         sorter: (a, b): number => (
           moment(b.createdAt).milliseconds() - moment(a.createdAt).milliseconds()
         ),
