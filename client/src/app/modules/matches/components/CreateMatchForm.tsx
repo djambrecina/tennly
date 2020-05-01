@@ -5,7 +5,12 @@ import {
 } from 'antd';
 import InputField from 'app/components/inputs/InputField';
 import Select from 'app/components/inputs/Select';
-import { required } from 'app/components/inputs/validators';
+import {
+  max6,
+  max7,
+  min0,
+  required
+} from 'app/components/inputs/validators';
 import generateObjectPath from 'core/services/generateObjectPath';
 import {
   getCreateMatchInfo,
@@ -65,19 +70,19 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1WinnerGames")}
-            validate={required}
+            validate={[required, max7, min0]}
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set2WinnerGames")}
-            validate={required}
+            validate={[required, max7, min0]}
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3WinnerGames")}
-            validate={required}
+            validate={[required, max7, min0]}
           />
         </Col>
       </Row>
@@ -93,19 +98,19 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1LoserGames")}
-            validate={required}
+            validate={[required, max7, min0]}
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set2LoserGames")}
-            validate={required}
+            validate={[required, max7, min0]}
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3LoserGames")}
-            validate={required}
+            validate={[required, max6, min0]}
           />
         </Col>
       </Row>
