@@ -10,7 +10,7 @@ import {
   WrappedFieldProps
 } from 'redux-form';
 
-import styles from './Multiselect.module.css';
+import styles from './Select.module.css';
 
 export interface DropdownOption {
   id: string | number;
@@ -19,6 +19,7 @@ export interface DropdownOption {
 
 interface SelectWrapperProps {
   placeholder?: string;
+  multiple?: boolean;
   disabled?: boolean;
   options: DropdownOption[];
 }
@@ -32,11 +33,13 @@ const renderOption = (option: DropdownOption): React.ReactElement => (
 const DropdownList = ({
   input,
   placeholder,
+  multiple,
   disabled,
   options
 }: WrappedFieldProps & SelectWrapperProps): React.ReactElement => (
   <AntdSelect
     {...input}
+    mode={multiple ? "multiple" : undefined}
     placeholder={placeholder}
     className={styles.select}
     disabled={disabled}
@@ -56,6 +59,7 @@ interface OwnProps {
   name: string;
   label: string;
   placeholder?: string;
+  multiple?: boolean;
   validate?: Validator | Validator[];
 }
 
@@ -63,6 +67,7 @@ const Select = ({
   name,
   label,
   placeholder,
+  multiple,
   disabled,
   options,
   validate
@@ -72,6 +77,7 @@ const Select = ({
     <Field
       name={name}
       placeholder={placeholder}
+      multiple={multiple}
       component={DropdownList}
       options={options}
       disabled={disabled}

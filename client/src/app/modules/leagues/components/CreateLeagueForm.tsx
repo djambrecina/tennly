@@ -3,7 +3,7 @@ import {
   Row
 } from 'antd';
 import InputField from 'app/components/inputs/InputField';
-import Multiselect, { DropdownOption } from 'app/components/inputs/Multiselect';
+import Select, { DropdownOption } from 'app/components/inputs/Select';
 import { required } from 'app/components/inputs/validators';
 import generateObjectPath from 'core/services/generateObjectPath';
 import { getPlayers } from 'core/store/players/selectors';
@@ -45,8 +45,9 @@ const CreateLeagueForm: React.FunctionComponent<Props> = ({
         label="Name"
         validate={required}
       />
-      <Multiselect
+      <Select
         name={generateObjectPath(FormValues, "players")}
+        multiple
         label="Players"
         options={playersOptions}
       />
