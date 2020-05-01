@@ -40,17 +40,21 @@ const CreateLeagueForm: React.FunctionComponent<Props> = ({
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <InputField
-        name={generateObjectPath(FormValues, "name")}
-        label="Name"
-        validate={required}
-      />
-      <Select
-        name={generateObjectPath(FormValues, "players")}
-        multiple
-        label="Players"
-        options={playersOptions}
-      />
+      <Row>
+        <label>Name</label>
+        <InputField
+          name={generateObjectPath(FormValues, "name")}
+          validate={required}
+        />
+      </Row>
+      <Row>
+        <label>Players</label>
+        <Select
+          name={generateObjectPath(FormValues, "players")}
+          multiple
+          options={playersOptions}
+        />
+      </Row>
       <Row justify="end">
         <Button
           onClick={onCancel}

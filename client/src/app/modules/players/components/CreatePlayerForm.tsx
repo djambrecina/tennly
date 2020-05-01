@@ -30,16 +30,20 @@ const CreatePlayerForm: React.FunctionComponent<Props> = ({
   handleSubmit
 }) => (
   <form className={styles.form} onSubmit={handleSubmit}>
-    <InputField
-      name={generateObjectPath(FormValues, "firstName")}
-      label="First name"
-      validate={required}
-    />
-    <InputField
-      name={generateObjectPath(FormValues, "lastName")}
-      label="Last name"
-      validate={required}
-    />
+    <Row>
+      <label>First name</label>
+      <InputField
+        name={generateObjectPath(FormValues, "firstName")}
+        validate={required}
+      />
+    </Row>
+    <Row>
+      <label>Last name</label>
+      <InputField
+        name={generateObjectPath(FormValues, "lastName")}
+        validate={required}
+      />
+    </Row>
     <Row justify="end">
       <Button
         onClick={onCancel}

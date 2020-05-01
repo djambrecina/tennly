@@ -38,7 +38,6 @@ const WrappedInputNumber = ({
 
 interface InputFieldProps {
   name: string;
-  label: string;
   validate?: Validator | Validator[];
 }
 
@@ -48,24 +47,20 @@ const parseNumber = (val: number | string): number => +val;
 
 const InputField = ({
   name,
-  label,
   validate,
   ...rest
 }: Props): JSX.Element => {
   const numberField = rest.type === 'number';
 
   return (
-    <Row>
-      <label>{label}</label>
-      <Field
-        name={name}
-        validate={validate}
-        component={numberField ? WrappedInputNumber : WrappedInput}
-        inputProps={rest}
-        parse={numberField ? parseNumber : undefined}
-        autoComplete="off"
-      />
-    </Row>
+    <Field
+      name={name}
+      validate={validate}
+      component={numberField ? WrappedInputNumber : WrappedInput}
+      inputProps={rest}
+      parse={numberField ? parseNumber : undefined}
+      autoComplete="off"
+    />
   );
 };
 

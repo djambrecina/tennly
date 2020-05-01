@@ -57,7 +57,6 @@ const DropdownList = ({
 
 interface OwnProps {
   name: string;
-  label: string;
   placeholder?: string;
   multiple?: boolean;
   validate?: Validator | Validator[];
@@ -65,25 +64,21 @@ interface OwnProps {
 
 const Select = ({
   name,
-  label,
   placeholder,
   multiple,
   disabled,
   options,
   validate
 }: BaseFieldProps & OwnProps & SelectWrapperProps): React.ReactElement => (
-  <Row>
-    <label>{label}</label>
-    <Field
-      name={name}
-      placeholder={placeholder}
-      multiple={multiple}
-      component={DropdownList}
-      options={options}
-      disabled={disabled}
-      validate={validate}
-    />
-  </Row>
+  <Field
+    name={name}
+    placeholder={placeholder}
+    multiple={multiple}
+    component={DropdownList}
+    options={options}
+    disabled={disabled}
+    validate={validate}
+  />
 );
 
 export default Select;
