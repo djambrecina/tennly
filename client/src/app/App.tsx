@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 import CreateLeague from './modules/leagues/CreateLeague';
+import CreateMatch from './modules/matches/CreateMatch';
 import CreatePlayer from './modules/players/CreatePlayer';
 import LeagueDetails from './modules/leagues/LeagueDetails';
 import Leagues from './modules/leagues/Leagues';
@@ -24,6 +25,7 @@ const App: React.FunctionComponent = () => (
         <Route exact path={paths.leagues} component={Leagues} />
         <Route exact path={paths.createLeague} component={CreateLeague} />
         <Route exact path={paths.leagueDetails} component={LeagueDetails} />
+        <Route exact path={paths.createMatch} component={CreateMatch} />
         <Route exact path={paths.players} component={Players} />
         <Route exact path={paths.createPlayer} component={CreatePlayer} />
       </Switch>

@@ -3,6 +3,7 @@ const paths = {
   leagues: '/leagues',
   createLeague: '/leagues/create',
   leagueDetails: '/leagues/:leagueId',
+  createMatch: '/leagues/:leagueId/match',
   players: '/players',
   createPlayer: '/players/create'
 };
