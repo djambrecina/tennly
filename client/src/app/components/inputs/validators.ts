@@ -8,7 +8,7 @@ export const max7 = (value: number): string | undefined => (
 
 export const min0 = (value: number): string | undefined => (
   value >= 0 ? undefined : "Can't be lower than 0"
-)
+);
 
 export const required = (value: string | number): string | undefined => (
   value || typeof value === "number" ? undefined : "Required"

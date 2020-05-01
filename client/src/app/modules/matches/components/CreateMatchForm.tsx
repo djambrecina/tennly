@@ -86,7 +86,7 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
           />
         </Col>
       </Row>
-      
+
       <label>Loser</label>
       <Row>
         <Col span={14}>

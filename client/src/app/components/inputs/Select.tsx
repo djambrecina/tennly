@@ -1,7 +1,4 @@
-import {
-  Row,
-  Select as AntdSelect
-} from 'antd';
+import { Select as AntdSelect } from 'antd';
 import React from 'react';
 import {
   BaseFieldProps,
