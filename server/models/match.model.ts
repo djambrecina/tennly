@@ -1,10 +1,13 @@
 import {
   AllowNull,
   AutoIncrement,
+  BelongsTo,
   Column,
   CreatedAt,
   DataType,
   ForeignKey,
+  Max,
+  Min,
   Model,
   PrimaryKey,
   Table,
@@ -27,20 +30,64 @@ class Match extends Model<Match> {
   @UpdatedAt
   updatedAt: Date;
 
-  @AllowNull(true)
-  @Column
   @ForeignKey(() => League)
+  @Column(DataType.INTEGER)
   leagueId: number;
 
-  @AllowNull(false)
-  @Column
-  @ForeignKey(() => Player)
-  winnerId: number;
+  @BelongsTo(() => League)
+  league: League;
 
   @AllowNull(false)
-  @Column
   @ForeignKey(() => Player)
+  @Column(DataType.INTEGER)
+  winnerId: number;
+
+  @BelongsTo(() => Player)
+  winner: Player;
+
+  @AllowNull(false)
+  @ForeignKey(() => Player)
+  @Column(DataType.INTEGER)
   loserId: number;
+
+  @BelongsTo(() => Player)
+  loser: Player;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set1WinnerGames: number;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set1LoserGames: number;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set2WinnerGames: number;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set2LoserGames: number;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set3WinnerGames: number;
+
+  @AllowNull(false)
+  @Min(0)
+  @Max(7)
+  @Column(DataType.INTEGER)
+  set3LoserGames: number;
 }
 
 export default Match;
