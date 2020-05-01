@@ -21,7 +21,7 @@ const LeagueDetails: React.FunctionComponent = () => {
 
   return (
     <PageHeader title={league.name} />
-  )
+  );
 };
 
 export default LeagueDetails;
