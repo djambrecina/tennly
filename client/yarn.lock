@@ -11057,6 +11057,11 @@ ts-easing@^0.2.0:
   resolved "https://registry.yarnpkg.com/ts-easing/-/ts-easing-0.2.0.tgz#c8a8a35025105566588d87dbda05dd7fbfa5a4ec"
   integrity sha512-Z86EW+fFFh/IFB1fqQ3/+7Zpf9t2ebOAxNI/V6Wo7r5gqiqtxmgTlQ1qbqQcjLKYeSHPTsEmvlJUDg/EuL0uHQ==
 
+ts-get@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ts-get/-/ts-get-1.0.5.tgz#86789d19fcde7927d59c093c39628059d6bdb0ec"
+  integrity sha512-XSAMqdnAE2u2OudAkJgokzegSZnmoYBOr0z7/ZSDJm9bxeK0jA6W8WmRwm8Rd5rrBOvwXjm/H3zZzsKBBlJPoA==
+
 ts-pnp@1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.1.6.tgz#389a24396d425a0d3162e96d2b4638900fdc289a"
