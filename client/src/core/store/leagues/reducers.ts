@@ -20,11 +20,11 @@ const allIds = createReducer<AllIdsState, LeaguesActions>([])
 const byId = createReducer<ByIdState, LeaguesActions>({})
   .handleAction(fetchLeagues.success, (_, action) => mapKeys(action.payload, p => p.id));
 
-const DETAILS_DEFAULT_STATE: DetailsState = {
+const DETAILS_DEFAULT: DetailsState = {
   name: "",
   players: []
 };
-const details = createReducer<DetailsState, LeaguesActions>(DETAILS_DEFAULT_STATE)
+const details = createReducer<DetailsState, LeaguesActions>(DETAILS_DEFAULT)
   .handleAction(fetchLeagueDetails.success, (_, action) => action.payload);
 
 const reducers = combineReducers({
