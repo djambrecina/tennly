@@ -39,9 +39,7 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
 }) => {
   const { players } = useSelector(getCreateMatchInfo);
   const winnerId = useSelector(getFormWinnerId);
-  const winner = players.find(p => p.id === winnerId);
   const loserId = useSelector(getFormLoserId);
-  const loser = players.find(p => p.id === loserId);
 
   const winnerOptions = players.filter(p => p.id !== loserId)
     .map(p => ({
@@ -56,28 +54,15 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
+      <label>Winner</label>
       <Row>
-        <label>Winner</label>
-        <Select
-          name={generateObjectPath(FormValues, "winnerId")}
-          options={winnerOptions}
-        />
-      </Row>
-      <Row>
-        <label>Loser</label>
-        <Select
-          name={generateObjectPath(FormValues, "loserId")}
-          options={loserOptions}
-        />
-      </Row>
-      <Row>
-        <label>Result</label>
-      </Row>
-      <Row>
-        <Col span={16}>
-          {winner ? `${winner.firstName} ${winner.lastName}` : ""}
+        <Col span={14}>
+          <Select
+            name={generateObjectPath(FormValues, "winnerId")}
+            options={winnerOptions}
+          />
         </Col>
-        <Col span={2}>
+        <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1WinnerGames")}
             validate={required}
@@ -96,11 +81,16 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
           />
         </Col>
       </Row>
+      
+      <label>Loser</label>
       <Row>
-        <Col span={16}>
-          {loser ? `${loser.firstName} ${loser.lastName}` : ""}
+        <Col span={14}>
+          <Select
+            name={generateObjectPath(FormValues, "loserId")}
+            options={loserOptions}
+          />
         </Col>
-        <Col span={2}>
+        <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1LoserGames")}
             validate={required}
@@ -119,6 +109,7 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
           />
         </Col>
       </Row>
+
       <Row justify="end">
         <Button
           onClick={onCancel}
