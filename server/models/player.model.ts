@@ -5,6 +5,7 @@ import {
   Column,
   CreatedAt,
   DataType,
+  HasMany,
   Length,
   Model,
   PrimaryKey,
@@ -14,6 +15,7 @@ import {
 
 import League from "./league.model";
 import LeaguePlayer from "./leaguePlayer.model";
+import Match from "./match.model";
 
 @Table
 class Player extends Model<Player> {
@@ -40,6 +42,9 @@ class Player extends Model<Player> {
 
   @BelongsToMany(() => League, () => LeaguePlayer)
   leagues: League[];
+
+  @HasMany(() => Match)
+  matches: Match[];
 }
 
 export default Player;

@@ -3,6 +3,7 @@ import { Sequelize } from "sequelize-typescript";
 import env from "./environment";
 import League from "../models/league.model";
 import LeaguePlayer from "../models/leaguePlayer.model";
+import Match from "../models/match.model";
 import Player from "../models/player.model";
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -14,6 +15,7 @@ export const initDatabase = async (): Promise<Sequelize> => {
   try {
     await sequelize.authenticate();
     sequelize.addModels([
+      Match,
       League,
       LeaguePlayer,
       Player

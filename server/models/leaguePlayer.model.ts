@@ -1,4 +1,5 @@
 import {
+  AllowNull,
   Column,
   ForeignKey,
   Model,
@@ -10,10 +11,12 @@ import Player from "./player.model";
 
 @Table
 class LeaguePlayer extends Model<LeaguePlayer> {
+  @AllowNull(false)
   @Column
   @ForeignKey(() => League)
   leagueId: number;
 
+  @AllowNull(false)
   @Column
   @ForeignKey(() => Player)
   playerId: number;

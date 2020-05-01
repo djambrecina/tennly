@@ -5,6 +5,7 @@ import {
   Column,
   CreatedAt,
   DataType,
+  HasMany,
   Length,
   Model,
   PrimaryKey,
@@ -13,6 +14,7 @@ import {
 } from "sequelize-typescript";
 
 import LeaguePlayer from "./leaguePlayer.model";
+import Match from "./match.model";
 import Player from "./player.model";
 
 @Table
@@ -35,6 +37,9 @@ class League extends Model<League> {
 
   @BelongsToMany(() => Player, () => LeaguePlayer)
   players: Player[];
+
+  @HasMany(() => Match)
+  matches: Match[];
 }
 
 export default League;
