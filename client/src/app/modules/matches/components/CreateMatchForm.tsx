@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CreateMatchForm: React.FunctionComponent = () => (
-  <form></form>
+  <form />
 );
 
 export default CreateMatchForm;

@@ -31,8 +31,7 @@ const reducers = combineReducers({
   allIds,
   byId,
   details,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fetchLeaguesInfo: fetchInfo(fetchLeagues as any)
+  fetchLeaguesInfo: fetchInfo(fetchLeagues)
 });
 
 export default reducers;

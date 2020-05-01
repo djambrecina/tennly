@@ -3,8 +3,10 @@ import {
   Reducer
 } from 'redux';
 import {
-  AsyncActionCreatorBuilder,
-  createReducer
+  createReducer,
+  EmptyActionCreator,
+  getType,
+  PayloadActionCreator
 } from 'typesafe-actions';
 
 export interface FetchInfoState {
@@ -19,25 +21,32 @@ export const DEFAULT_STATE: FetchInfoState = {
   failure: false
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AsyncActions = AsyncActionCreatorBuilder<[any, any], [any, any], [any, any]>;
+interface AsyncActions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  request: PayloadActionCreator<any, any> | EmptyActionCreator<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  success: PayloadActionCreator<any, any> | EmptyActionCreator<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  failure: PayloadActionCreator<any, any> | EmptyActionCreator<any>;
+}
 
 const fetchInfo = (asyncActions: AsyncActions): Reducer => (
-  createReducer<FetchInfoState, AnyAction>(DEFAULT_STATE)
-    .handleAction(asyncActions.request, () => ({
+  createReducer<FetchInfoState, AnyAction>(DEFAULT_STATE, {
+    [getType(asyncActions.request)]: () => ({
       ...DEFAULT_STATE,
       loading: true
-    }))
-    .handleAction(asyncActions.success, () => ({
+    }),
+    [getType(asyncActions.success)]: () => ({
       ...DEFAULT_STATE,
       loading: false,
       success: true
-    }))
-    .handleAction(asyncActions.failure, () => ({
+    }),
+    [getType(asyncActions.failure)]: () => ({
       ...DEFAULT_STATE,
       loading: false,
       failure: true
-    }))
+    })
+  })
 );
 
 export default fetchInfo;

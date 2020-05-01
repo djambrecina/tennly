@@ -19,8 +19,7 @@ const byId = createReducer<ByIdState, PlayersActions>({})
 const reducers = combineReducers({
   allIds,
   byId,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  fetchPlayersInfo: fetchInfo(fetchPlayers as any)
+  fetchPlayersInfo: fetchInfo(fetchPlayers)
 });
 
 export default reducers;
