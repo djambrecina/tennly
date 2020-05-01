@@ -1,10 +1,18 @@
 import { PageHeader } from 'antd';
+import paths from 'config/paths';
 import { fetchCreateMatchInfo } from 'core/store/matches/actions';
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import {
+  generatePath,
+  RouteComponentProps,
+  useParams
+} from 'react-router';
 
-const CreateMatch: React.FunctionComponent = () => {
+import CreateMatchForm from './components/CreateMatchForm';
+import { CreateMatchFormValues } from './types';
+
+const CreateMatch: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const { leagueId } = useParams();
   const dispatch = useDispatch();
 
@@ -14,10 +22,24 @@ const CreateMatch: React.FunctionComponent = () => {
     }
   }, [dispatch, leagueId]);
 
+  const onCancel = useCallback(() => {
+    if (leagueId) {
+      history.push(generatePath(paths.leagueDetails, { leagueId }));
+    }
+  }, [history, leagueId]);
+
+  const onSubmit = useCallback((values: CreateMatchFormValues) => {
+    console.log(values);
+    /* TODO */
+  }, []);
+
   return (
-    <PageHeader
-      title="Add match result"
-    />
+    <PageHeader title="Add match result">
+      <CreateMatchForm
+        onCancel={onCancel}
+        onSubmit={onSubmit}
+      />
+    </PageHeader>
   );
 };
 
