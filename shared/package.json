@@ -1,6 +1,7 @@
 {
   "name": "tennly-shared",
   "version": "1.0.0",
+  "main": "index.ts",
   "description": "",
   "author": "djambrecina",
   "license": "MIT",
@@ -19,6 +20,7 @@
     "ts-jest": "^25.4.0"
   },
   "scripts": {
+    "build": "tsc index.ts",
     "test": "jest",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
   }

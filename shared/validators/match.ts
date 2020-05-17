@@ -17,8 +17,8 @@ export const isValidResult = (
   set1LoserGames: number,
   set2WinnerGames: number,
   set2LoserGames: number,
-  set3WinnerGames: number | null,
-  set3LoserGames: number | null
+  set3WinnerGames?: number,
+  set3LoserGames?: number
 ): boolean => {
   let winnerSets = 0;
   let loserSets = 0;
@@ -30,19 +30,22 @@ export const isValidResult = (
   loserSets += set2WinnerGames > set2LoserGames ? 0 : 1;
 
   if (winnerSets === 2 && loserSets === 0) {
-    return set3WinnerGames === null
-      && set3LoserGames === null
+    return set3WinnerGames === undefined
+      && set3LoserGames === undefined
       && isValidSetResult(set1WinnerGames, set1LoserGames)
       && isValidSetResult(set2WinnerGames, set2LoserGames);
   }
 
-  winnerSets += set3WinnerGames > set3LoserGames ? 1 : 0;
-  loserSets += set3WinnerGames > set3LoserGames ? 0 : 1;
+  if (typeof set3WinnerGames === "number" && typeof set3LoserGames === "number") {
+    winnerSets += set3WinnerGames > set3LoserGames ? 1 : 0;
+    loserSets += set3WinnerGames > set3LoserGames ? 0 : 1;
 
-  if (winnerSets === 2 && loserSets === 1) {
-    return isValidSetResult(set1WinnerGames, set1LoserGames)
-      && isValidSetResult(set2WinnerGames, set2LoserGames)
-      && isValidSetResult(set3WinnerGames, set3LoserGames);
+
+    if (winnerSets === 2 && loserSets === 1) {
+      return isValidSetResult(set1WinnerGames, set1LoserGames)
+        && isValidSetResult(set2WinnerGames, set2LoserGames)
+        && isValidSetResult(set3WinnerGames, set3LoserGames);
+    }
   }
 
   return false;

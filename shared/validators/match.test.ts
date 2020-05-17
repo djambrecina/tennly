@@ -103,7 +103,7 @@ describe("isValidSetResult", () => {
 
 describe("isValidResult", () => {
   it("should return true when result is 6:0 6:0", () => {
-    expect(isValidResult(6, 0, 6, 0, null, null)).toBe(true);
+    expect(isValidResult(6, 0, 6, 0, undefined, undefined)).toBe(true);
   });
 
   it("should return true when result is 6:0 0:6 6:0", () => {
@@ -111,7 +111,7 @@ describe("isValidResult", () => {
   });
 
   it("should return false when result is 0:6 0:6", () => {
-    expect(isValidResult(0, 6, 0, 6, null, null)).toBe(false);
+    expect(isValidResult(0, 6, 0, 6, undefined, undefined)).toBe(false);
   });
 
   it("should return false when result is 6:0 0:6 0:6", () => {
@@ -119,11 +119,11 @@ describe("isValidResult", () => {
   });
 
   it("should return false when result is 6:0 6:0 and set 3 winner games are 6", () => {
-    expect(isValidResult(6, 0, 6, 0, 6, null)).toBe(false);
+    expect(isValidResult(6, 0, 6, 0, 6, undefined)).toBe(false);
   });
 
   it("should return false when result is 6:0 6:0 and set 3 loser games are 6", () => {
-    expect(isValidResult(6, 0, 6, 0, null, 6)).toBe(false);
+    expect(isValidResult(6, 0, 6, 0, undefined, 6)).toBe(false);
   });
 
   it("should return false when result is 6:0 6:0 6:0", () => {

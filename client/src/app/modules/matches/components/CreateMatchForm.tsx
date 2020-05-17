@@ -20,9 +20,11 @@ import {
 import React from 'react';
 import { useSelector } from 'react-redux';
 import {
+  FormErrors,
   InjectedFormProps,
   reduxForm
 } from 'redux-form';
+import Shared from 'tennly-shared';
 
 import { CREATE_MATCH_FORM } from '../constants';
 import styles from './CreateMatchForm.module.css';
@@ -36,6 +38,33 @@ interface FormProps {
 }
 
 type Props = InjectedFormProps<CreateMatchFormValues, FormProps> & FormProps;
+
+const validateForm = ({
+  set1WinnerGames,
+  set1LoserGames,
+  set2WinnerGames,
+  set2LoserGames,
+  set3WinnerGames,
+  set3LoserGames
+}: CreateMatchFormValues): FormErrors<CreateMatchFormValues, string> => {
+  const valid = Shared.MatchValidator.isValidResult(set1WinnerGames,
+    set1LoserGames,
+    set2WinnerGames,
+    set2LoserGames,
+    set3WinnerGames,
+    set3LoserGames);
+
+  const errors: FormErrors<CreateMatchFormValues, string> = {};
+  if (!valid) {
+    errors.set1WinnerGames = "Invalid result";
+    errors.set1LoserGames = "Invalid result";
+    errors.set2WinnerGames = "Invalid result";
+    errors.set2LoserGames = "Invalid result";
+    errors.set3WinnerGames = "Invalid result";
+    errors.set3LoserGames = "Invalid result";
+  }
+  return errors;
+}
 
 const CreateMatchForm: React.FunctionComponent<Props> = ({
   invalid,
@@ -82,7 +111,7 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3WinnerGames")}
-            validate={[required, max7, min0]}
+            validate={[max7, min0]}
           />
         </Col>
       </Row>
@@ -110,7 +139,7 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3LoserGames")}
-            validate={[required, max6, min0]}
+            validate={[max6, min0]}
           />
         </Col>
       </Row>
@@ -134,5 +163,6 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
 };
 
 export default reduxForm<CreateMatchFormValues, FormProps>({
-  form: CREATE_MATCH_FORM
+  form: CREATE_MATCH_FORM,
+  validate: validateForm,
 })(CreateMatchForm);
