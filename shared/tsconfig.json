@@ -11,6 +11,10 @@
     "target": "esnext",
 		"suppressImplicitAnyIndexErrors": true,
     "baseUrl": "src",
-    "outDir": "lib"
-	}
+    "rootDir": "src",
+    "outDir": "lib/"
+  },
+  "include": [
+    "src/"
+  ]
 }
