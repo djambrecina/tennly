@@ -5,12 +5,6 @@ import {
 } from 'antd';
 import InputField from 'app/components/inputs/InputField';
 import Select from 'app/components/inputs/Select';
-import {
-  max6,
-  max7,
-  min0,
-  required
-} from 'app/components/inputs/validators';
 import generateObjectPath from 'core/services/generateObjectPath';
 import {
   getCreateMatchInfo,
@@ -54,16 +48,9 @@ const validateForm = ({
     set3WinnerGames,
     set3LoserGames);
 
-  const errors: FormErrors<CreateMatchFormValues, string> = {};
-  if (!valid) {
-    errors.set1WinnerGames = "Invalid result";
-    errors.set1LoserGames = "Invalid result";
-    errors.set2WinnerGames = "Invalid result";
-    errors.set2LoserGames = "Invalid result";
-    errors.set3WinnerGames = "Invalid result";
-    errors.set3LoserGames = "Invalid result";
-  }
-  return errors;
+  return {
+    _error: valid ? undefined : "Invalid result"
+  };
 };
 
 const CreateMatchForm: React.FunctionComponent<Props> = ({
@@ -99,19 +86,19 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1WinnerGames")}
-            validate={[required, max7, min0]}
+            type="number"
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set2WinnerGames")}
-            validate={[required, max7, min0]}
+            type="number"
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3WinnerGames")}
-            validate={[max7, min0]}
+            type="number"
           />
         </Col>
       </Row>
@@ -127,19 +114,19 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
         <Col span={2} offset={2}>
           <InputField
             name={generateObjectPath(FormValues, "set1LoserGames")}
-            validate={[required, max7, min0]}
+            type="number"
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set2LoserGames")}
-            validate={[required, max7, min0]}
+            type="number"
           />
         </Col>
         <Col span={2} offset={1}>
           <InputField
             name={generateObjectPath(FormValues, "set3LoserGames")}
-            validate={[max6, min0]}
+            type="number"
           />
         </Col>
       </Row>

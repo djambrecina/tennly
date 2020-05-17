@@ -11,6 +11,8 @@ import {
   WrappedFieldProps
 } from 'redux-form';
 
+import styles from './InputField.module.css';
+
 const WrappedInput = ({
   input,
   inputProps,
@@ -53,6 +55,7 @@ const InputField = ({
 
   return (
     <Field
+      className={styles.inputField}
       name={name}
       validate={validate}
       component={numberField ? WrappedInputNumber : WrappedInput}
