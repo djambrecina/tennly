@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"sourceMap": true,
+		"allowJs": true,
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true,
+		"lib": [
+			"esnext"
+		],
+    "target": "esnext",
+		"suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "src",
+    "outDir": "lib"
+	}
+}
