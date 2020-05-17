@@ -42,10 +42,6 @@
                     ".jsx",
                     ".ts",
                     ".tsx"
-                ],
-                "paths": [
-                    "node_modules",
-                    "server"
                 ]
             }
         }
