@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"module": "commonjs",
-		"sourceMap": true,
 		"allowJs": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,

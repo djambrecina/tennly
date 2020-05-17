@@ -1,7 +1,7 @@
 import {
   isValidSetResult,
   isValidResult
-} from './match';
+} from '../../src/validators/match';
 
 describe("isValidSetResult", () => {
   it("should return true when result is 6:0", () => {

@@ -21,6 +21,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ."
+    "lint": "yarn lint:src && yarn lint:test",
+    "lint:src": "eslint --ext .js,.jsx,.ts,.tsx src",
+    "lint:test": "eslint --ext .js,.jsx,.ts,.tsx test"
   }
 }
