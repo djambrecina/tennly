@@ -1,6 +1,6 @@
+import { CreateMatchViewModel } from 'tennly-shared';
 import { createAsyncAction } from 'typesafe-actions';
 
-import { CreateMatchViewModel } from '../../../../../shared/types/match';
 import {
   FETCH_CREATE_MATCH_INFO,
   FETCH_CREATE_MATCH_INFO_SUCCESS,

@@ -1,7 +1,8 @@
 import {
   AllPlayersViewModel,
   CreatePlayerRequestBody
-} from '../../../../../shared/types/player';
+} from 'tennly-shared';
+
 import api from '../api';
 
 export const getPlayers = async (): Promise<AllPlayersViewModel[]> => {

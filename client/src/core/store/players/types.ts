@@ -1,6 +1,6 @@
+import { AllPlayersViewModel } from 'tennly-shared';
 import { ActionType } from 'typesafe-actions';
 
-import { AllPlayersViewModel } from '../../../../../shared/types/player';
 import * as playersActions from './actions';
 
 export type AllIdsState = number[];

@@ -1,4 +1,5 @@
-import { CreateMatchViewModel } from '../../../../../shared/types/match';
+import { CreateMatchViewModel } from 'tennly-shared';
+
 import api from '../api';
 
 export const getCreateMatchInfo = async (leagueId: string): Promise<CreateMatchViewModel> => {

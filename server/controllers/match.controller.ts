@@ -3,8 +3,8 @@ import {
   Response
 } from 'express';
 import * as log from 'loglevel';
+import { CreateMatchViewModel } from 'tennly-shared';
 
-import { CreateMatchViewModel } from '../../shared/types/match';
 import MatchService from '../services/match.service';
 
 export const getCreateMatchInfo = async (

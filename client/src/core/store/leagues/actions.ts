@@ -1,10 +1,10 @@
-import { createAsyncAction } from 'typesafe-actions';
-
 import {
   AllLeaguesViewModel,
   CreateLeagueRequestBody,
   LeagueDetailsViewModel
-} from '../../../../../shared/types/league';
+} from 'tennly-shared';
+import { createAsyncAction } from 'typesafe-actions';
+
 import {
   CREATE_LEAGUE,
   CREATE_LEAGUE_SUCCESS,

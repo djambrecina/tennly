@@ -3,11 +3,11 @@ import {
   Response
 } from 'express';
 import * as log from 'loglevel';
-
 import {
   AllPlayersViewModel,
   CreatePlayerRequestBody
-} from '../../shared/types/player';
+} from 'tennly-shared';
+
 import PlayerService from '../services/player.service';
 
 export const create = async (

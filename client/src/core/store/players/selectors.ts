@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
+import { AllPlayersViewModel } from 'tennly-shared';
 import { State } from 'types';
 
 import { FetchInfoState } from '../abstract/reducers/fetchInfo';
-import { AllPlayersViewModel } from '../../../../../shared/types/player';
 import {
   AllIdsState,
   ByIdState

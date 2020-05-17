@@ -1,4 +1,5 @@
-import { CreateMatchViewModel } from '../../shared/types/match';
+import { CreateMatchViewModel } from 'tennly-shared';
+
 import League from '../models/league.model';
 import Player from '../models/player.model';
 

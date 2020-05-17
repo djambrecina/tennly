@@ -4,13 +4,13 @@ import {
 } from 'express';
 import * as log from 'loglevel';
 import { Transaction } from 'sequelize';
-
-import { sequelize } from '../config/database';
 import {
   AllLeaguesViewModel,
   CreateLeagueRequestBody,
   LeagueDetailsViewModel
-} from '../../shared/types/league';
+} from 'tennly-shared';
+
+import { sequelize } from '../config/database';
 import LeaguePlayerService from '../services/leaguePlayer.service';
 import LeagueService from '../services/league.service';
 

@@ -2,14 +2,14 @@ import {
   Sequelize,
   Transaction
 } from 'sequelize';
-
-import League from '../models/league.model';
-import Player from '../models/player.model';
 import {
   AllLeaguesViewModel,
   CreateLeagueRequestBody,
   LeagueDetailsViewModel
-} from '../../shared/types/league';
+} from 'tennly-shared';
+
+import League from '../models/league.model';
+import Player from '../models/player.model';
 
 export const create = async (
   league: CreateLeagueRequestBody,

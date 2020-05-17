@@ -1,9 +1,9 @@
-import { ActionType } from 'typesafe-actions';
-
 import {
   AllLeaguesViewModel,
   LeagueDetailsViewModel
-} from '../../../../../shared/types/league';
+} from 'tennly-shared';
+import { ActionType } from 'typesafe-actions';
+
 import * as leaguesActions from './actions';
 
 export type AllIdsState = number[];

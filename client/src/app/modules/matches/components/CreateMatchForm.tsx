@@ -24,7 +24,7 @@ import {
   InjectedFormProps,
   reduxForm
 } from 'redux-form';
-import Shared from 'tennly-shared';
+import { MatchValidator } from 'tennly-shared';
 
 import { CREATE_MATCH_FORM } from '../constants';
 import styles from './CreateMatchForm.module.css';
@@ -47,7 +47,7 @@ const validateForm = ({
   set3WinnerGames,
   set3LoserGames
 }: CreateMatchFormValues): FormErrors<CreateMatchFormValues, string> => {
-  const valid = Shared.MatchValidator.isValidResult(set1WinnerGames,
+  const valid = MatchValidator.isValidResult(set1WinnerGames,
     set1LoserGames,
     set2WinnerGames,
     set2LoserGames,
@@ -64,7 +64,7 @@ const validateForm = ({
     errors.set3LoserGames = "Invalid result";
   }
   return errors;
-}
+};
 
 const CreateMatchForm: React.FunctionComponent<Props> = ({
   invalid,
@@ -164,5 +164,5 @@ const CreateMatchForm: React.FunctionComponent<Props> = ({
 
 export default reduxForm<CreateMatchFormValues, FormProps>({
   form: CREATE_MATCH_FORM,
-  validate: validateForm,
+  validate: validateForm
 })(CreateMatchForm);

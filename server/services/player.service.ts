@@ -1,5 +1,6 @@
+import { CreatePlayerRequestBody } from 'tennly-shared';
+
 import Player from '../models/player.model';
-import { CreatePlayerRequestBody } from '../../shared/types/player';
 
 export const create = async (player: CreatePlayerRequestBody): Promise<void> => {
   await Player.create(player);

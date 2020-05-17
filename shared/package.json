@@ -1,6 +1,7 @@
 {
   "name": "tennly-shared",
   "version": "1.0.0",
+  "main": "lib/index.js",
   "description": "",
   "author": "djambrecina",
   "license": "MIT",

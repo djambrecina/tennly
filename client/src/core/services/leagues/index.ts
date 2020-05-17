@@ -2,7 +2,8 @@ import {
   AllLeaguesViewModel,
   CreateLeagueRequestBody,
   LeagueDetailsViewModel
-} from '../../../../../shared/types/league';
+} from 'tennly-shared';
+
 import api from '../api';
 
 export const getLeagues = async (): Promise<AllLeaguesViewModel[]> => {

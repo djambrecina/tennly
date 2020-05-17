@@ -1,9 +1,9 @@
-import { createAsyncAction } from 'typesafe-actions';
-
 import {
   AllPlayersViewModel,
   CreatePlayerRequestBody
-} from '../../../../../shared/types/player';
+} from 'tennly-shared';
+import { createAsyncAction } from 'typesafe-actions';
+
 import {
   CREATE_PLAYER,
   CREATE_PLAYER_SUCCESS,
