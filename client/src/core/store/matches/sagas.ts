@@ -1,16 +1,49 @@
-import { getCreateMatchInfo } from 'core/services/matches';
-import { error } from 'core/services/notification';
+import paths from 'config/paths';
+import { push } from 'connected-react-router';
+import {
+  getCreateMatchInfo,
+  postMatch
+} from 'core/services/matches';
+import {
+  error,
+  success
+} from 'core/services/notification';
+import { generatePath } from 'react-router';
 import {
   all,
   call,
   fork,
   put,
+  takeEvery,
   takeLatest
 } from 'redux-saga/effects';
 import { ActionType } from 'typesafe-actions';
 
-import { fetchCreateMatchInfo } from './actions';
-import { FETCH_CREATE_MATCH_INFO } from './constants';
+import {
+  createMatch,
+  fetchCreateMatchInfo
+} from './actions';
+import {
+  CREATE_MATCH,
+  FETCH_CREATE_MATCH_INFO
+} from './constants';
+
+function* watchCreateMatchSaga(): Generator {
+  yield takeEvery(CREATE_MATCH,
+    function* createMatchSaga(action: ActionType<typeof createMatch.request>) {
+      try {
+        const body = action.payload;
+        yield call(postMatch, body);
+        yield put(createMatch.success());
+        success("Match created");
+        yield put(push(generatePath(paths.leagueDetails, { leagueId: body.leagueId })));
+      }
+      catch (err) {
+        yield put(createMatch.failure(err));
+        error("Creating match failed", err);
+      }
+    });
+}
 
 function* watchFetchCreateMatchInfoSaga(): Generator {
   yield takeLatest(FETCH_CREATE_MATCH_INFO,
@@ -29,6 +62,7 @@ function* watchFetchCreateMatchInfoSaga(): Generator {
 
 function* matchesSaga(): Generator {
   yield all([
+    fork(watchCreateMatchSaga),
     fork(watchFetchCreateMatchInfoSaga)
   ]);
 }

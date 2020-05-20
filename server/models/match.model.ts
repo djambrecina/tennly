@@ -42,7 +42,7 @@ class Match extends Model<Match> {
   @Column(DataType.INTEGER)
   winnerId: number;
 
-  @BelongsTo(() => Player)
+  @BelongsTo(() => Player, "winnerId")
   winner: Player;
 
   @AllowNull(false)
@@ -50,7 +50,7 @@ class Match extends Model<Match> {
   @Column(DataType.INTEGER)
   loserId: number;
 
-  @BelongsTo(() => Player)
+  @BelongsTo(() => Player, "loserId")
   loser: Player;
 
   @AllowNull(false)

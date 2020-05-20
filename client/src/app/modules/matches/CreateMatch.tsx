@@ -1,6 +1,9 @@
 import { PageHeader } from 'antd';
 import paths from 'config/paths';
-import { fetchCreateMatchInfo } from 'core/store/matches/actions';
+import {
+  createMatch,
+  fetchCreateMatchInfo
+} from 'core/store/matches/actions';
 import React, { useCallback, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import {
@@ -29,9 +32,13 @@ const CreateMatch: React.FunctionComponent<RouteComponentProps> = ({ history }) 
   }, [history, leagueId]);
 
   const onSubmit = useCallback((values: CreateMatchFormValues) => {
-    console.log(values);
-    /* TODO */
-  }, []);
+    if (leagueId) {
+      dispatch(createMatch.request({
+        leagueId: parseInt(leagueId),
+        ...values
+      }));
+    }
+  }, [dispatch, leagueId]);
 
   return (
     <PageHeader title="Add match result">
