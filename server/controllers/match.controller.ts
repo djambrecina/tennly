@@ -16,11 +16,6 @@ export const create = async (
 ): Promise<void> => {
   try {
     const { body } = req;
-    const { leagueId, winnerId: player1Id, loserId: player2Id } = body;
-
-    if (await MatchService.hasMatchWithLeagueAndPlayers(leagueId, player1Id, player2Id)) {
-      throw new Error("Match already exist");
-    }
 
     await MatchService.create(body);
 
