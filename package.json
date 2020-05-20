@@ -19,7 +19,7 @@
     "dev": "concurrently --kill-others-on-fail \"yarn start:server\" \"yarn start:client\"",
     "test": "yarn test:shared",
     "test:shared": "cd shared && yarn test",
-    "lint": "yarn lint:server && yarn lint:client && yarn lint:shared",
+    "lint": "concurrently \"yarn lint:server\" \"yarn lint:client\" \"yarn lint:shared\"",
     "lint:server": "cd server && yarn lint",
     "lint:client": "cd client && yarn lint",
     "lint:shared": "cd shared && yarn lint",
