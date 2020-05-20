@@ -5,8 +5,8 @@ import {
   postMatch
 } from 'core/services/matches';
 import {
-  error,
-  success
+  showErrorMessage,
+  showSuccessMessage
 } from 'core/services/notification';
 import { generatePath } from 'react-router';
 import {
@@ -35,12 +35,12 @@ function* watchCreateMatchSaga(): Generator {
         const body = action.payload;
         yield call(postMatch, body);
         yield put(createMatch.success());
-        success("Match created");
+        showSuccessMessage("Match created");
         yield put(push(generatePath(paths.leagueDetails, { leagueId: body.leagueId })));
       }
       catch (err) {
         yield put(createMatch.failure(err));
-        error("Creating match failed", err);
+        showErrorMessage("Creating match failed", err);
       }
     });
 }
@@ -55,7 +55,7 @@ function* watchFetchCreateMatchInfoSaga(): Generator {
       }
       catch (err) {
         yield put(fetchCreateMatchInfo.failure(err));
-        error("Fetching league info failed", err);
+        showErrorMessage("Fetching league info failed", err);
       }
     });
 }

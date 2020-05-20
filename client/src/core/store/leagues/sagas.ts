@@ -1,8 +1,8 @@
 import paths from 'config/paths';
 import { push } from 'connected-react-router';
 import {
-  error,
-  success
+  showErrorMessage,
+  showSuccessMessage
 } from 'core/services/notification';
 import {
   getDetails,
@@ -38,12 +38,12 @@ function* watchCreateLeagueSaga(): Generator {
         const body = action.payload;
         yield call(postLeague, body);
         yield put(createLeague.success());
-        success("League created");
+        showSuccessMessage("League created");
         yield put(push(generatePath(paths.leagues)));
       }
       catch (err) {
         yield put(createLeague.failure(err));
-        error("Creating league failed", err);
+        showErrorMessage("Creating league failed", err);
       }
     });
 }
@@ -57,7 +57,7 @@ function* watchFetchLeaguesSaga(): Generator {
       }
       catch (err) {
         yield put(fetchLeagues.failure(err));
-        error("Fetching leagues failed", err);
+        showErrorMessage("Fetching leagues failed", err);
       }
     });
 }
@@ -72,7 +72,7 @@ function* watchFetchLeagueDetailsSaga(): Generator {
       }
       catch (err) {
         yield put(fetchLeagueDetails.failure(err));
-        error("Fetching league details failed", err);
+        showErrorMessage("Fetching league details failed", err);
       }
     });
 }
