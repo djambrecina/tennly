@@ -45,9 +45,3 @@ export const getDetails = async (leagueId: string): Promise<LeagueDetailsViewMod
     }]
   })
 );
-
-export default {
-  create,
-  getAll,
-  getDetails
-};

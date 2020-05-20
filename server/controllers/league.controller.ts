@@ -11,8 +11,8 @@ import {
 } from 'tennly-shared';
 
 import { sequelize } from '../config/database';
-import LeaguePlayerService from '../services/leaguePlayer.service';
-import LeagueService from '../services/league.service';
+import * as LeaguePlayerService from '../services/leaguePlayer.service';
+import * as LeagueService from '../services/league.service';
 
 export const create = async (
   req: Request<null, null, CreateLeagueRequestBody, null>,
@@ -63,10 +63,4 @@ export const getDetails = async (
     log.error(err);
     res.status(400).json(err.message);
   }
-};
-
-export default {
-  create,
-  getAll,
-  getDetails
 };

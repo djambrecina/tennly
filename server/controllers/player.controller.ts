@@ -8,7 +8,7 @@ import {
   CreatePlayerRequestBody
 } from 'tennly-shared';
 
-import PlayerService from '../services/player.service';
+import * as PlayerService from '../services/player.service';
 
 export const create = async (
   req: Request<null, null, CreatePlayerRequestBody, null>,
@@ -40,9 +40,4 @@ export const getAll = async (
     log.error(err);
     res.status(400).json(err.message);
   }
-};
-
-export default {
-  create,
-  getAll
 };

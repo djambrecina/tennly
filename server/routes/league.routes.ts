@@ -8,7 +8,7 @@ const LeagueRoutes = (router: Router) => {
   router.get(`${apiUrl}/all`, LeagueController.getAll);
   router.get(`${apiUrl}/:leagueId`, LeagueController.getDetails);
 
-  router.post(`${apiUrl}`, LeagueController.create);
+  router.post(apiUrl, LeagueController.create);
 };
 
 export default LeagueRoutes;

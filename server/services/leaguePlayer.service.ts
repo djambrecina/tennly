@@ -13,7 +13,3 @@ export const createAll = async (
   }));
   return LeaguePlayer.bulkCreate(records, { transaction });
 };
-
-export default {
-  createAll
-};

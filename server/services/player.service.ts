@@ -13,8 +13,3 @@ export const getAll = async (): Promise<Player[]> => {
 
   return players;
 };
-
-export default {
-  create,
-  getAll
-};

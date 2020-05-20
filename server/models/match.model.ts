@@ -77,13 +77,11 @@ class Match extends Model<Match> {
   @Column(DataType.INTEGER)
   set2LoserGames: number;
 
-  @AllowNull(false)
   @Min(0)
   @Max(7)
   @Column(DataType.INTEGER)
   set3WinnerGames: number;
 
-  @AllowNull(false)
   @Min(0)
   @Max(7)
   @Column(DataType.INTEGER)

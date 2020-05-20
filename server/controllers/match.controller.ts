@@ -3,9 +3,34 @@ import {
   Response
 } from 'express';
 import * as log from 'loglevel';
-import { CreateMatchViewModel } from 'tennly-shared';
+import {
+  CreateMatchRequestBody,
+  CreateMatchViewModel
+} from 'tennly-shared';
 
-import MatchService from '../services/match.service';
+import * as MatchService from '../services/match.service';
+
+export const create = async (
+  req: Request<null, null, CreateMatchRequestBody, null>,
+  res: Response<null>
+): Promise<void> => {
+  try {
+    const { body } = req;
+    const { leagueId, winnerId: player1Id, loserId: player2Id } = body;
+
+    if (await MatchService.hasMatchWithLeagueAndPlayers(leagueId, player1Id, player2Id)) {
+      throw new Error("Match already exist");
+    }
+
+    await MatchService.create(body);
+
+    res.json(null);
+  }
+  catch (err) {
+    log.error(err);
+    res.status(400).json(err.message);
+  }
+};
 
 export const getCreateMatchInfo = async (
   req: Request<null, null, null, { leagueId: string }>,
@@ -22,8 +47,4 @@ export const getCreateMatchInfo = async (
     log.error(err);
     res.status(400).json(err.message);
   }
-};
-
-export default {
-  getCreateMatchInfo
 };
