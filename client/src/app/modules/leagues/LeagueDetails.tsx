@@ -16,10 +16,12 @@ import {
   useParams
 } from 'react-router';
 
+import LeagueDetailsTable from './components/LeagueDetailsTable';
+
 const LeagueDetails: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
   const { leagueId } = useParams();
   const dispatch = useDispatch();
-  const league = useSelector(getLeagueDetails);
+  const leagueDetails = useSelector(getLeagueDetails);
 
   useEffect(() => {
     if (leagueId) {
@@ -35,13 +37,15 @@ const LeagueDetails: React.FunctionComponent<RouteComponentProps> = ({ history }
 
   return (
     <PageHeader
-      title={league.name}
+      title={leagueDetails.name}
       extra={(
         <Button onClick={goToCreateMatch}>
           Add Match Result
         </Button>
       )}
-    />
+    >
+      <LeagueDetailsTable />
+    </PageHeader>
   );
 };
 

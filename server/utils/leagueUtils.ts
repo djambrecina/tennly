@@ -98,7 +98,9 @@ export const getStandings = (
       return 1;
     }
 
-    return s1.player.lastName.localeCompare(s2.player.lastName);
+    const player1FullName = `${s1.player.lastName} ${s1.player.firstName}`;
+    const player2FullName = `${s2.player.lastName} ${s2.player.firstName}`;
+    return player1FullName.localeCompare(player2FullName);
   });
 
   for (let i = 1; i <= standings.length; i++) {
