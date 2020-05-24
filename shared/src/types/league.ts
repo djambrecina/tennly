@@ -16,7 +16,19 @@ interface LeagueDetailsPlayerViewModel {
   lastName: string;
 }
 
+export interface LeagueDetailsStandingsViewModel {
+  position: number;
+  points: number;
+  player: LeagueDetailsPlayerViewModel;
+  won: number;
+  lost: number;
+  setsFor: number;
+  setsAgainst: number;
+  gamesFor: number;
+  gamesAgainst: number;
+}
+
 export interface LeagueDetailsViewModel {
   name: string;
-  players: LeagueDetailsPlayerViewModel[];
+  standings: LeagueDetailsStandingsViewModel[];
 }

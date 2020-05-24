@@ -13,6 +13,7 @@ import {
 import { sequelize } from '../config/database';
 import * as LeaguePlayerService from '../services/leaguePlayer.service';
 import * as LeagueService from '../services/league.service';
+import { getStandings } from '../utils/leagueUtils';
 
 export const create = async (
   req: Request<null, null, CreateLeagueRequestBody, null>,
@@ -57,7 +58,12 @@ export const getDetails = async (
     const { leagueId } = req.params;
     const league = await LeagueService.getDetails(leagueId);
 
-    res.json(league);
+    const leagueDetails: LeagueDetailsViewModel = {
+      name: league.name,
+      standings: getStandings(league.matches, league.players)
+    };
+
+    res.json(leagueDetails);
   }
   catch (err) {
     log.error(err);

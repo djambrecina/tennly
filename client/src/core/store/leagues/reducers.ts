@@ -22,7 +22,7 @@ const byId = createReducer<ByIdState, LeaguesActions>({})
 
 const DETAILS_DEFAULT: DetailsState = {
   name: "",
-  players: []
+  standings: []
 };
 const details = createReducer<DetailsState, LeaguesActions>(DETAILS_DEFAULT)
   .handleAction(fetchLeagueDetails.success, (_, action) => action.payload);

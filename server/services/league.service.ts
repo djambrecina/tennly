@@ -9,6 +9,7 @@ import {
 } from 'tennly-shared';
 
 import League from '../models/league.model';
+import Match from '../models/match.model';
 import Player from '../models/player.model';
 
 export const create = async (
@@ -33,7 +34,7 @@ export const getAll = async (): Promise<AllLeaguesViewModel[]> => (
   })
 );
 
-export const getDetails = async (leagueId: string): Promise<LeagueDetailsViewModel> => (
+export const getDetails = async (leagueId: string): Promise<League> => (
   League.findByPk(leagueId, {
     attributes: ["name"],
     include: [{
@@ -42,6 +43,18 @@ export const getDetails = async (leagueId: string): Promise<LeagueDetailsViewMod
       through: {
         attributes: []
       }
+    }, {
+      model: Match,
+      attributes: [
+        "winnerId",
+        "loserId",
+        "set1WinnerGames",
+        "set1LoserGames",
+        "set2WinnerGames",
+        "set2LoserGames",
+        "set3WinnerGames",
+        "set3LoserGames"
+      ]
     }]
   })
 );
