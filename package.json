@@ -8,7 +8,7 @@
     "@types/node": "^13.11.1",
     "body-parser": "^1.19.0",
     "esm": "^3.2.25",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "loglevel": "^1.6.8",
     "pg": "^8.0.2",
     "pg-hstore": "^2.3.3",
